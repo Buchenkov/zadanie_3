@@ -9,17 +9,17 @@
         <td><u>Заголовок</u></td>
         <td><u>Дата публикации</u></td>
         <td><u>Содержание</u></td>
-<!--        <td><u>Рейтинг</u></td>-->
-<!--        <td><u>Категория</u></td>-->
+        <td><u>Рейтинг</u></td>
+        <td><u>Категория</u></td>
     </tr>
     <tr>
         <td>{{ post.title }}</td>
         <td>{{ post.post_time|date:'d M Y' }}</td>
         <td>{{ post.text|censor}}</td>     <!--|censor-->
-<!--        <td>{{ post.rating }}</td>-->
-<!--        {% for cat in posts.category.all %}-->
-<!--        <td>{{ cat.name }}</td>-->
-<!--        {% endfor %}-->
+        <td>{{ post.rating }}</td>
+        {% for cat in posts.category.all %}
+        <td>{{ cat.name }}</td>
+        {% endfor %}
     </tr>
 </table>
 {% else %}
