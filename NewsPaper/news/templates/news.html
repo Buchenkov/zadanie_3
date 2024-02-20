@@ -23,12 +23,11 @@
         <td>{{ post.post_time|date:'d M Y' }}</td>
         <td>{{ post.text|truncatewords:20|censor }}</td>
         <td>{{ post.rating }}</td>
-        <td>{% for cat in post.category.all %}
-            {{ cat.name }}
+        {% for cat in post.category.all %}
+        <td>{{ cat.name }}</td>
         {% endfor %}
-        </td>
+        </tr>
     {% endfor %}
-    </tr>
 </table>
 {% else %}
 <h3>Публикаций нет!</h3>
