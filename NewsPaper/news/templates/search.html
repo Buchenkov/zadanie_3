@@ -3,12 +3,21 @@
 {% load custom_filters %}
 {% load custom_tags %}
 
+{% block title %}
+<h2>News Search </h2>
+{% endblock title %}
 
-<!-- Название у нас будет ... -->
 {% block content %}
+<hr>
+{# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
+   <form action="" method="get">
+       {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
+       {{ filterset.form.as_p }}
+       {# Добавим кнопку отправки данных формы #}
+       <input type="submit" value="Найти" />
+   </form>
+
 {% if posts %}
-<h2> Количество постов {{ posts|length }}</h2>
-<h3>{% current_time '%b %d %Y' %}</h3>
 
 <table width="100%" style="margin-top: 35px">
    <tr>    <!-- Если вы хотите поместить ячейки столбцов в строчку, то открываете тег tr (TableRow) и в него добавляете ячейки (тег td) с содержанием того, что вам надо вывести.-->
@@ -31,31 +40,8 @@
     {% endfor %}
 </table>
 {% else %}
-<h3>Публикаций нет!</h3>
+<h3>Выберите параметры для поиска!</h3>
 {% endif %}
-
-   {# Добавляем пагинацию на страницу #}
-
-   {# Информация о предыдущих страницах #}
-   {% if page_obj.has_previous %}
-       <a href="?{% url_replace page=1 %}">1</a>
-       {% if page_obj.previous_page_number != 1 %}
-           ...
-           <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
-       {% endif %}
-   {% endif %}
-
-   {# Информация о текущей странице #}
-   {{ page_obj.number }}
-
-   {# Информация о следующих страницах #}
-   {% if page_obj.has_next %}
-       <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
-       {% if paginator.num_pages != page_obj.next_page_number %}
-           ...
-           <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
-       {% endif %}
-   {% endif %}
 
 {% endblock content %}
 

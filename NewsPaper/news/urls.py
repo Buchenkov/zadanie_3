@@ -6,7 +6,8 @@ from .views import *
 
 urlpatterns = [
    path('news/', NewsList.as_view()),  # authors/
-   path('news/<int:pk>/', Post.as_view()),
+   path('news/<int:pk>/', PostView.as_view()),
+   path('search/', Search.as_view(), name='search'),
 ]
 
 # urlpatterns = [

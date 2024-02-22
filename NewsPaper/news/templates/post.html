@@ -17,8 +17,8 @@
         <td>{{ post.post_time|date:'d M Y' }}</td>
         <td>{{ post.text|censor}}</td>     <!--|censor-->
         <td>{{ post.rating }}</td>
-        {% for cat in posts.category.all %}
-        <td>{{ cat.name }}</td>
+        {% for cat in post.category.all %}
+        <td>{{ cat.category_name }}</td>
         {% endfor %}
     </tr>
 </table>
