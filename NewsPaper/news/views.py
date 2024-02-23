@@ -1,6 +1,8 @@
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
 from .filters import NewsFilter
+from .forms import PostForm
 from .models import *
 
 
@@ -15,7 +17,7 @@ class NewsList(ListView):
     context_object_name = 'posts'
     # Поле, которое будет использоваться для сортировки объектов
     ordering = '-post_time'
-    paginate_by = 2  # количество записей на странице
+    paginate_by = 10  # количество записей на странице
 
     # Переопределяем функцию получения списка товаров
     def get_queryset(self):
@@ -64,3 +66,65 @@ class Search(ListView):
         context = super().get_context_data(**kwargs)
         context['filterset'] = self.filterset
         return context
+
+
+class PostCreate(CreateView):
+    form_class = PostForm
+    model = Post
+    template_name = 'news/post_create.html'
+
+    # context_object_name = 'post_create'
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        if self.request.path == '/news_create/':
+            post.post.news = 'NE'
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('post', kwargs={'pk': self.object.pk})
+
+
+class ArticleCreate(CreateView):
+    form_class = PostForm
+    model = Post
+    template_name = 'article/articles_create.html'
+
+    # def form_valid(self, form):
+    #     post = form.save(commit=False)
+    #     if self.request.path == '/articles_create/':
+    #         post.post.news = 'AR'
+    #     return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('post', kwargs={'pk': self.object.pk})
+
+
+class PostDelete(DeleteView):
+    model = Post
+    template_name = 'news/news_delete.html'
+    success_url = reverse_lazy('post')
+
+    def get_success_url(self):
+        return reverse_lazy('news')
+
+
+class ArticleDelete(DeleteView):
+    model = Post
+    template_name = 'article/article_delete.html'
+    success_url = reverse_lazy('post')
+
+    def get_success_url(self):
+        return reverse_lazy('news')
+
+
+class NewsUpdate(UpdateView):
+    form_class = PostForm
+    model = Post
+    template_name = 'news/post_create.html'
+
+
+class ArticleUpdate(UpdateView):
+    form_class = PostForm
+    model = Post
+    template_name = 'article/articles_create.html'

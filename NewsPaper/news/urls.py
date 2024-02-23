@@ -5,9 +5,15 @@ from django.views.generic import detail
 from .views import *
 
 urlpatterns = [
-   path('news/', NewsList.as_view()),  # authors/
-   path('news/<int:pk>/', PostView.as_view()),
+   path('news/', NewsList.as_view(), name='news'),
+   path('news/<int:pk>/', PostView.as_view(), name='post'),
    path('search/', Search.as_view(), name='search'),
+   path('news/post_create/', PostCreate.as_view(), name='post_create'),
+   path('article/articles_create/', ArticleCreate.as_view(), name='articles_create'),
+   path('news/<int:pk>/edit/', NewsUpdate.as_view(), name='news_edit'),
+   path('news/<int:pk>/delete/', PostDelete.as_view(), name='news_delete'),
+   path('articles/<int:pk>/edit', ArticleUpdate.as_view(), name='articles_edit'),
+   path('article/<int:pk>/delete', ArticleDelete.as_view(), name='article_delete'),
 ]
 
 # urlpatterns = [

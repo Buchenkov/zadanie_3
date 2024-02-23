@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Sum
 from django.db.models.functions import Coalesce
-
+from django.urls import reverse
 
 from datetime import datetime
 
@@ -63,6 +63,9 @@ class Post(models.Model):
     def __str__(self):
         # return '{}'.format(self.title)
         return f'{self.title}'
+
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'pk': self.pk})
 
 
 class PostCategory(models.Model):
