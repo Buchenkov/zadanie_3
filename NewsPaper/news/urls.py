@@ -5,6 +5,7 @@ from django.views.generic import detail
 from .views import *
 
 urlpatterns = [
+   path('', NewsList.as_view()),
    path('news/', NewsList.as_view(), name='news'),
    path('news/<int:pk>/', PostView.as_view(), name='post'),
    path('search/', Search.as_view(), name='search'),
