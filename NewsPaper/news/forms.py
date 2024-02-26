@@ -18,10 +18,10 @@ class PostForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         text = cleaned_data.get("text")
-        # if text is not None and len(Post.text) < 20:
-        #     raise ValidationError(
-        #         "Text: Описание не может быть менее 20 символов."
-        #     )
+        if text is not None and len(text) < 20:
+            raise ValidationError(
+                "Text: Описание не может быть менее 20 символов."
+            )
 
         title = cleaned_data.get("title")
         if title == text:

@@ -16,7 +16,7 @@
        {# Добавим кнопку отправки данных формы #}
        <input type="submit" value="Найти" />
    </form>
-
+<hr>
 {% if posts %}
 
 <table width="100%" style="margin-top: 35px">
@@ -38,11 +38,11 @@
         {% endfor %}
         </tr>
     {% endfor %}
+
 </table>
 {% else %}
 <h3>Выберите параметры для поиска!</h3>
 {% endif %}
-
 {% endblock content %}
 
 

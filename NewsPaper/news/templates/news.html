@@ -10,30 +10,42 @@
 <h2> Количество постов {{ posts|length }}</h2>
 <h3>{% current_time '%b %d %Y' %}</h3>
 
-<table width="100%" style="margin-top: 35px">
-   <tr>    <!-- Если вы хотите поместить ячейки столбцов в строчку, то открываете тег tr (TableRow) и в него добавляете ячейки (тег td) с содержанием того, что вам надо вывести.-->
-        <td><u>Заголовок</u></td>
-        <td><u>Дата публикации</u></td>
-        <td><u>Содержание</u></td>
-        <td><u>Рейтинг</u></td>
-        <td><u>Категория</u></td>
-    </tr>
+<table width="110%" style="margin-top: 35px">
+       <tr> <!-- Если вы хотите поместить ячейки столбцов в строчку, то открываете тег tr (TableRow) и в него добавляете ячейки (тег td) с содержанием того, что вам надо вывести.-->
+            <td><h4><u>Заголовок</u></h4></td>
+            <td><h4><u>Дата и автор публикации</u></h4></td>
+            <td><h4><u>Содержание</u></h4></td>
+            <td><h4><u>Рейтинг</u></h4></td>
+            <td><h4><u> Категория </u></h4></td>
+           {% if perms.news.add_post or perms.news.delete_post %}
+           <td><h4><u>Действия</u></h4></td>
+           {% endif %}
+        </tr>
     {% for post in posts %}
     <tr>
         <td>{{ post.title }}</td>
-        <td>{{ post.post_time|date:'d M Y' }}</td>
+        <td>{{ post.post_time|date:'d M Y'}} - {{ post.author }}</td>
         <td>{{ post.text|truncatewords:20|censor }}</td>
         <td>{{ post.rating }}</td>
         {% for cat in post.category.all %}
         <td>{{ cat.category_name }}</td>
         {% endfor %}
+         <td>
+            {# А здесь доступ для каждой ссылки теперь будем проверять отдельно #}
+            {% if perms.news.add_post or perms.news.delete_post %}
+            <a href="{% url 'news_edit' post.id %}">Изменить</a>
+            {% endif %}
+            {% if perms.news.add_post or perms.news.delete_post %}
+            <a href="{% url 'news_delete' post.id %}">Удалить</a>
+            {% endif %}
+            {% comment %}<hr>{% endcomment %}
+        </td>
         </tr>
     {% endfor %}
 </table>
 {% else %}
 <h3>Публикаций нет!</h3>
 {% endif %}
-
    {# Добавляем пагинацию на страницу #}
 
    {# Информация о предыдущих страницах #}
@@ -41,7 +53,7 @@
        <a href="?{% url_replace page=1 %}">1</a>
        {% if page_obj.previous_page_number != 1 %}
            ...
-           <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+           <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
        {% endif %}
    {% endif %}
 
@@ -50,10 +62,10 @@
 
    {# Информация о следующих страницах #}
    {% if page_obj.has_next %}
-       <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+       <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
        {% if paginator.num_pages != page_obj.next_page_number %}
            ...
-           <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+           <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
        {% endif %}
    {% endif %}
 

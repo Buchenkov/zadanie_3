@@ -1,6 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
-
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from .filters import NewsFilter
 from .forms import PostForm
 from .models import *
@@ -68,7 +70,9 @@ class Search(ListView):
         return context
 
 
-class PostCreate(CreateView):
+# @login_required
+class PostCreate(PermissionRequiredMixin, CreateView):
+    permission_required = ('news.add_post',)
     form_class = PostForm
     model = Post
     template_name = 'news/post_create.html'
@@ -84,23 +88,31 @@ class PostCreate(CreateView):
     def get_success_url(self):
         return reverse_lazy('post', kwargs={'pk': self.object.pk})
 
+    # def get_form_kwargs(self):
+    #     kwargs = super().get_form_kwargs()
+    #     if self.request.user != kwargs['instance'].user:
+    #         return self.handle_no_permission()
+    #     return kwargs
 
-class ArticleCreate(CreateView):
+
+class ArticleCreate(PermissionRequiredMixin, CreateView):
+    permission_required = ('news.add_post',)
     form_class = PostForm
     model = Post
     template_name = 'article/articles_create.html'
 
-    # def form_valid(self, form):
-    #     post = form.save(commit=False)
-    #     if self.request.path == '/articles_create/':
-    #         post.post.news = 'AR'
-    #     return super().form_valid(form)
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        if self.request.path == '/articles_create/':
+            post.post.news = 'AR'
+        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('post', kwargs={'pk': self.object.pk})
 
 
-class PostDelete(DeleteView):
+class PostDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = ('news.delete_post',)
     model = Post
     template_name = 'news/news_delete.html'
     success_url = reverse_lazy('post')
@@ -109,7 +121,8 @@ class PostDelete(DeleteView):
         return reverse_lazy('news')
 
 
-class ArticleDelete(DeleteView):
+class ArticleDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = ('news.delete_post',)
     model = Post
     template_name = 'article/article_delete.html'
     success_url = reverse_lazy('post')
@@ -118,13 +131,16 @@ class ArticleDelete(DeleteView):
         return reverse_lazy('news')
 
 
-class NewsUpdate(UpdateView):
+class NewsUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = ('news.change_post',)
     form_class = PostForm
     model = Post
     template_name = 'news/post_create.html'
 
 
-class ArticleUpdate(UpdateView):
+class ArticleUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = ('news.change_post',)
     form_class = PostForm
     model = Post
     template_name = 'article/articles_create.html'
+

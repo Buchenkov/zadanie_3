@@ -134,3 +134,75 @@ Shell
     >
     <input type="submit" class="mt-3 btn-primary" value="Найти" />
 </form>
+
+
+    <tr>
+        <td>{{ post.title }}</td>
+        <td>{{ post.post_time|date:'d M Y' }}</td>
+        <td>{{ post.text|truncatewords:20|censor }}</td>
+        <td>{{ post.rating }}</td>
+        {% for cat in post.category.all %}
+        <td>{{ cat.category_name }}</td>
+        {% endfor %}
+        </tr>
+
+<tr>
+               <td>{{ p.title|censor }}</td>
+               <td>{{ p.date_in|date:'d M Y' }}</td>
+               <td>{{ p.text|censor }}</td>
+               <td>
+                    {# А здесь доступ для каждой ссылки теперь будем проверять отдельно #}
+                    {% if perms.news_app.change_post %}
+                    <a href="{% url 'news_update' pk=post.id %}">Изменить</a>
+                    {% endif %}
+                    {% if perms.news_app.delete_post %}
+                    <a href="{% url 'news_delete' post.id %}">Удалить</a>
+                    {% endif %}
+               </td>
+
+
+
+                   <nav class="list-pages">
+                       <ul>
+                           {% for p in paginator.page_range %}
+                       <li class="page-num">
+                           <a href="?page={{ p }}">{{ p }}</a>
+                       </li>
+                       {{ endfor %}
+                       </ul>
+                   </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

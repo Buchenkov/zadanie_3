@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'news',
     'django_filters',
-    # 'accounts',
+    'accounts',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.yandex',   # отвечает за выход через Yandex
 ]
 
 SITE_ID = 1
@@ -55,7 +59,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
+
+# SOCIALACCOUNT_PROVIDERS = {   # ещё вариант, не через админку
+#     'yandex': {
+#         'APP': {
+#             'client_id': '0944d864ef4a4c80b932844064159f4d',
+#             'secret': '80331f60205c4cf1b7f1d5e7e5e5ccca',
+#             'key': ''
+#         }
+#     }
+# }
 
 ROOT_URLCONF = 'project.urls'
 
@@ -70,9 +85,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'django.template.context_processors.request',
             ],
         },
     },
+]
+
+# Этого раздела может не быть, добавьте его в указанном виде.
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
@@ -131,3 +153,15 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [BASE_DIR / 'static',]
+
+LOGIN_REDIRECT_URL = "/news"
+
+# Первые два параметра указывают на то, что поле email является обязательным и уникальным. Третий, наоборот, — говорит,
+# что username необязательный. Следующий параметр указывает, что аутентификация будет происходить посредством
+# электронной почты. Напоследок мы указываем, что верификация почты отсутствует.
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_FORMS = {'signup': 'accounts.forms.CustomSignupForm'}
