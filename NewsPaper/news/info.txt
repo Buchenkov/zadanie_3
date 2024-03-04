@@ -105,6 +105,10 @@ Shell
     Post.objects.order_by('-rating')[0].comment_set.all().values('comment_time', 'comment_user__username', 'rating', 'text')
 
 
+========================================
+git reset --hard HEAD^1     - откатится на один комит назад
+
+
 
 <!--{% load custom_filters %}-->
 |censor

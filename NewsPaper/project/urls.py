@@ -24,5 +24,6 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('', include('news.urls')),
     path('', include('accounts.urls')),
+    path('', include('subscriptions.urls')),
 ]
 # http://127.0.0.1:8000/accounts/yandex/login/callback

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.yandex',   # отвечает за выход через Yandex
+    'subscriptions',
 ]
 
 SITE_ID = 1
@@ -85,7 +86,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'django.template.context_processors.request',
             ],
         },
     },
@@ -163,5 +163,30 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # 'none'
+# mandatory — не пускать пользователя на сайт до момента подтверждения почты;
+# optional — сообщение о подтверждении почты будет отправлено, но пользователь может залогиниться на сайте без подтверждения почты.
 ACCOUNT_FORMS = {'signup': 'accounts.forms.CustomSignupForm'}
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend',  # который просто напечатает его в консоли.
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "igorchan"
+EMAIL_HOST_PASSWORD = "iliezvcovrxqizez"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = "igorchan@yandex.ru"
+
+
+SERVER_EMAIL = "igorchan@yandex.ru"
+MANAGERS = (
+    ('igor', 'igorchan@mail.ru'),
+    # ('Petr', 'petr@yandex.ru'),
+)
+
+ADMINS = (
+    ('igor', 'igorchan@yandex.ru'),
+)
