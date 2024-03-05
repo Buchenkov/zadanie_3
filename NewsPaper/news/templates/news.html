@@ -25,7 +25,8 @@
     <tr>
         <td>{{ post.title }}</td>
         <td>{{ post.post_time|date:'d M Y'}} - {{ post.author }}</td>
-        <td>{{ post.text|truncatewords:20|censor }}</td>
+        <td>{{ post.text|truncatewords:20|censor }}<a href="{% url 'post' post.id %}">Подробнее</a></td>
+
         <td>{{ post.rating }}</td>
         {% for cat in post.category.all %}
         <td>{{ cat.category_name }}</td>

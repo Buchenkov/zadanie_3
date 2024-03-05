@@ -35,11 +35,11 @@ class NewsList(ListView):
         # Возвращаем из функции отфильтрованный список товаров
         return self.filterset.qs
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filter'] = NewsFilter(self.request.GET, queryset=self.get_queryset())
-        context['is_not_author'] = not self.request.user.filter(name='author').exists
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['filterest'] = NewsFilter(self.request.GET, queryset=self.get_queryset())
+    #     context['is_not_author'] = not self.request.user.filter(name='author').exists
+    #     return context
 
 
 class PostView(DetailView):
