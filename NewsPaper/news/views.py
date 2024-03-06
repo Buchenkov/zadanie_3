@@ -1,9 +1,12 @@
+from allauth.account.views import logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, render
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.models import Group
+from django.core.cache import cache
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy
-from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+
 from .filters import NewsFilter
 from .forms import PostForm
 from .models import *
@@ -155,11 +158,20 @@ class CategoryListView(NewsList):
         queryset = Post.objects.filter(category=self.category).order_by('-post_time')
         return queryset
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs):   # для кнопки подписаться
         context = super().get_context_data(**kwargs)
         context['is_not_subscriber'] = self.request.user not in self.category.subscribers.all()
         context['category'] = self.category
         return context
+
+
+@login_required
+def upgrade_me(request):
+    user = request.user
+    premium_group = Group.objects.get(name='authors')
+    if not request.user.groups.filter(name='authors').exists():
+        premium_group.user_set.add(user)
+    return redirect('/news')
 
 
 @login_required
@@ -170,4 +182,19 @@ def subscribe(request, pk):
 
     message = 'Вы успешно подписались на рассылку новостей категории'
     return render(request, 'news/subscribe.html', {'category': category, 'message': message})
+
+
+# def PostDetail(DetailView):
+#     template_name = 'news/post_detail.html'
+#     queryset = Post.objects.all()
+#
+#     def get_object(self, *args, **kwargs):
+#         print(self.request.user.id)
+#         obj = cache.get(f'post-{self.kwargs["pk"]}', None)
+#         if not obj:
+#             obj = super().get_object(queryset=self.queryset)
+#             cache.set(f'post-{self.kwargs["pk"]}', obj)
+#
+#         return obj
+
 

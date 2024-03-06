@@ -1,6 +1,7 @@
 from django.urls import path
 from django.views.generic import detail
 
+from accounts import views
 # Импортируем созданные нами представления
 from .views import *
 
@@ -15,9 +16,10 @@ urlpatterns = [
    path('news/<int:pk>/delete/', PostDelete.as_view(), name='news_delete'),
    path('articles/<int:pk>/edit', ArticleUpdate.as_view(), name='articles_edit'),
    path('article/<int:pk>/delete', ArticleDelete.as_view(), name='article_delete'),
-   # path('<int:pk>', PostDetail.as_view(), name='post_detail'),
-   path('news/categories/<int:pk>', CategoryListView.as_view(), name='category_list'),
-   path('categories/<int:pk>/subscribe', subscribe, name='subscribe'),  # подписка на категорию
+   path('upgrade/', upgrade_me, name='upgrade'),
+   # path('news/post_detail/<int:pk>', PostDetail.as_view(), name='post_detail'),
+   path('categories/<int:pk>', CategoryListView.as_view(), name='category_list'),  # страница категории и подписка
+   path('categories/<int:pk>/subscribe', subscribe, name='subscribe'),  # подписка на категорию (успешно подписался)
 ]
 
 # urlpatterns = [

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'django.contrib.sites',
-    'news',
+    'news.apps.NewsConfig',
     'django_filters',
     'accounts',
     'allauth',
@@ -177,8 +177,16 @@ EMAIL_HOST_USER = "igorchan"
 EMAIL_HOST_PASSWORD = "iliezvcovrxqizez"
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-
 DEFAULT_FROM_EMAIL = "igorchan@yandex.ru"
+
+
+# # ++++ вариант из вебинара
+# EMAIL_HOST = 'smtp.yandex.ru'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_SSL = True
+# DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
 
 SERVER_EMAIL = "igorchan@yandex.ru"
@@ -190,3 +198,7 @@ MANAGERS = (
 ADMINS = (
     ('igor', 'igorchan@yandex.ru'),
 )
+
+# APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+# APSCHEDULER_RUN_NOW_TIMEOUT = 25
+SITE_URL = 'http://127.0.0.1:8000'

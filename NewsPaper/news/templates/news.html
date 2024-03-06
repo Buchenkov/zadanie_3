@@ -1,4 +1,3 @@
-<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
 {% extends 'flatpages/default.html' %}
 {% load custom_filters %}
 {% load custom_tags %}
@@ -6,6 +5,9 @@
 
 <!-- Название у нас будет ... -->
 {% block content %}
+    {% if is_not_author %}
+        <button><a href="{% url 'upgrade' %}">Стать автором</a></button>
+    {% endif %}
 {% if posts %}
 <h2> Количество постов {{ posts|length }}</h2>
 <h3>{% current_time '%b %d %Y' %}</h3>
@@ -23,6 +25,11 @@
         </tr>
     {% for post in posts %}
     <tr>
+        <style type="text/css">
+  td {
+    padding: 0 20px;
+  }
+</style>
         <td>{{ post.title }}</td>
         <td>{{ post.post_time|date:'d M Y'}} - {{ post.author }}</td>
         <td>{{ post.text|truncatewords:20|censor }}<a href="{% url 'post' post.id %}">Подробнее</a></td>

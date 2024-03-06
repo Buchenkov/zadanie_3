@@ -23,7 +23,6 @@ class Author(models.Model):
         self.save()
 
 
-
 class Category(models.Model):
     category_name = models.CharField(max_length=64, unique=True)  # Категории новостей/статей
     subscribers = models.ManyToManyField(User, blank=True, null=True, related_name='categories')

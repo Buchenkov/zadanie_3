@@ -39,8 +39,18 @@
                <li class="nav-item">
                    <a class="nav-link" href="/search/">Search</a>
                </li>
-           </ul>
+
        </div>
+
+                       <ul class="sidebar-nav">
+               {% if user.is_authenticated %}
+               <li>User: {{ user.get_username }}</li>
+               <li><a href="accounts/logout">Logout</a></li>
+               {% else %}
+               <li><a href="{% url 'login'%}?next={{request.path}}"> <table>Login</table></a></li>
+               {% endif %}
+           </ul>
+
    </div>
 </nav>
         <!-- Page content-->
@@ -55,6 +65,7 @@
                        <h2>{{ flatpage.title }}</h2>
                        {{ flatpage.content }}
                    {% endblock content %}
+                </ul>
                </div>
            </div>
         </div>
