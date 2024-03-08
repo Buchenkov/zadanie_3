@@ -12,10 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os.path
 from pathlib import Path
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -27,7 +25,6 @@ SECRET_KEY = 'django-insecure-82ab0rp+q!0_t0^vkkvt&xoyo4)2htg2@bewl*=c0302icxomc
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -46,7 +43,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.yandex',   # отвечает за выход через Yandex
+    'allauth.socialaccount.providers.yandex',  # отвечает за выход через Yandex
     'subscriptions',
 ]
 
@@ -99,7 +96,6 @@ AUTHENTICATION_BACKENDS = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -109,7 +105,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -129,7 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -141,7 +135,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -152,9 +145,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = [BASE_DIR / 'static',]
+STATICFILES_DIRS = [BASE_DIR / 'static', ]
 
-LOGIN_REDIRECT_URL = "/news"
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5    # Ограничение попыток входа в систему
+LOGIN_URL = '/account/login/'
+LOGOUT_REDIRECT_URL = '/account/login/'
+LOGIN_REDIRECT_URL = "/"
 
 # Первые два параметра указывают на то, что поле email является обязательным и уникальным. Третий, наоборот, — говорит,
 # что username необязательный. Следующий параметр указывает, что аутентификация будет происходить посредством
@@ -163,22 +159,24 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # 'none'
 # mandatory — не пускать пользователя на сайт до момента подтверждения почты;
 # optional — сообщение о подтверждении почты будет отправлено, но пользователь может залогиниться на сайте без подтверждения почты.
 ACCOUNT_FORMS = {'signup': 'accounts.forms.CustomSignupForm'}
-
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True  # позволит избежать дополнительного входа и активирует аккаунт сразу,
+# как только мы перейдём по ссылке.
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7  # хранит количество дней, когда доступна ссылка на подтверждение регистрации
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend',  # который просто напечатает его в консоли.
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "igorchan"
-EMAIL_HOST_PASSWORD = "iliezvcovrxqizez"
-EMAIL_USE_TLS = False
+EMAIL_HOST_PASSWORD = "jwitospiqdwbrxpf"
+# EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+EMAIL_SUBJECT_PREFIX = ['NewsPortal']
 DEFAULT_FROM_EMAIL = "igorchan@yandex.ru"
-
 
 # # ++++ вариант из вебинара
 # EMAIL_HOST = 'smtp.yandex.ru'
@@ -190,15 +188,15 @@ DEFAULT_FROM_EMAIL = "igorchan@yandex.ru"
 
 
 SERVER_EMAIL = "igorchan@yandex.ru"
-MANAGERS = (
-    ('igor', 'igorchan@mail.ru'),
-    # ('Petr', 'petr@yandex.ru'),
-)
+# MANAGERS = (
+#     ('igor', 'igorchan@mail.ru'),
+#     # ('Petr', 'petr@yandex.ru'),
+# )
+#
+# ADMINS = (
+#     ('igor', 'igorchan@yandex.ru'),
+# )
 
-ADMINS = (
-    ('igor', 'igorchan@yandex.ru'),
-)
-
-# APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
-# APSCHEDULER_RUN_NOW_TIMEOUT = 25
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+APSCHEDULER_RUN_NOW_TIMEOUT = 25
 SITE_URL = 'http://127.0.0.1:8000'

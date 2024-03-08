@@ -24,54 +24,101 @@ class SignUpForm(UserCreationForm):
         )
 
 
-# class CustomSignupForm(SignupForm):
-#     def save(self, request):
-#         user = super().save(request)
-#         all_users = Group.objects.get(name="all_users")
-#         user.groups.add(all_users)
-#         return user
 
-
-# class CustomSignupForm(SignupForm):
-#     def save(self, request):
-#         user = super().save(request)
-#         all_users = Group.objects.get(name="all_users")
-#         user.groups.add(all_users)
-#
-#         mail_managers(
-#             subject='Новый пользователь!',
-#             message=f'Пользователь {user.username} зарегистрировался на сайте.'
-#         )
-#
-#         mail_admins(
-#             subject='Новый пользователь!',
-#             message=f'Пользователь {user.username} зарегистрировался на сайте.'
-#         )
-#         #
-#         #
-#         subject = 'Добро пожаловать на новостной портал!'
-#         text = f'{user.username}, вы успешно зарегистрировались на сайте!'
-#         html = (
-#             f'<b>{user.username}</b>, вы успешно зарегистрировались на '
-#             f'<a href="http://127.0.0.1:8000/news">сайте</a>!'
-#         )
-#         msg = EmailMultiAlternatives(
-#             subject=subject, body=text, from_email=None, to=[user.email]
-#         )
-#         msg.attach_alternative(html, "text/html")
-#         msg.send()
-#
-#         return user
-
-
-class CustomSignupForm(SignupForm):
+# # Чтобы отправить HTML по почте, лучше всего воспользоваться специальным классом EmailMultiAlternatives.
+# # Он позволяет одновременно отправить текстовое сообщение и приложить к нему версию с HTML-разметкой.
+class CustomSignupForm(SignupForm):     # форма регистрации
     def save(self, request):
         user = super().save(request)
-
-        send_mail(
-            subject='Добро пожаловать в наш интернет-магазин!',
-            message=f'{user.username}, вы успешно зарегистрировались!',
-            from_email=None,  # будет использовано значение DEFAULT_FROM_EMAIL
-            recipient_list=[user.email],
+        all_users = Group.objects.get(name="all_users")
+        user.groups.add(all_users)
+#
+#         # вар_1
+#         # # Функция send_mail позволяет отправить письмо указанному получателю в recipient_list.
+#         # # В поле subject мы передаём тему письма, а в message — текстовое сообщение.
+#         # send_mail(
+#         #     subject='Добро пожаловать в наш интернет-магазин!',
+#         #     message=f'{user.username}, вы успешно зарегистрировались!',
+#         #     from_email=None,  # будет использовано значение DEFAULT_FROM_EMAIL
+#         #     recipient_list=[user.email],
+#         # )
+#
+#         # вар_2
+        subject = 'Добро пожаловать на наш новостной портал!'
+        text = f'{user.username}, вы успешно зарегистрировались на сайте!'
+        html = (
+            f'<b>{user.username}</b>, вы успешно зарегистрировались на '
+            f'<a href="http://127.0.0.1:8000/news">сайте</a>!'
         )
+        msg = EmailMultiAlternatives(
+            subject=subject, body=text, from_email=None, to=[user.email]
+        )
+        msg.attach_alternative(html, "text/html")
+        msg.send()
+
+        mail_managers(
+            subject='Новый пользователь!',
+            message=f'Пользователь {user.username} зарегистрировался на сайте.'
+        )
+        # mail_admins(
+        #     subject='Новый пользователь!',
+        #     message=f'Пользователь {user.username} зарегистрировался на сайте.'
+        # )
+
         return user
+
+
+
+
+
+# class CustomSignupForm(SignupForm):
+#     def save(self, request):
+#         user = super().save(request)
+#         all_users = Group.objects.get(name="all_users")
+#         user.groups.add(all_users)
+#         return user
+
+
+# class CustomSignupForm(SignupForm):
+#     def save(self, request):
+#         user = super().save(request)
+#         all_users = Group.objects.get(name="all_users")
+#         user.groups.add(all_users)
+
+        # mail_managers(
+        #     subject='Новый пользователь!',
+        #     message=f'Пользователь {user.username} зарегистрировался на сайте.'
+        # )
+        #
+        # mail_admins(
+        #     subject='Новый пользователь!',
+        #     message=f'Пользователь {user.username} зарегистрировался на сайте.'
+        # )
+        #
+        # #
+        # subject = 'Добро пожаловать на новостной портал!'
+        # text = f'{user.username}, вы успешно зарегистрировались на сайте!'
+        # html = (
+        #     f'<b>{user.username}</b>, вы успешно зарегистрировались на '
+        #     f'<a href="http://127.0.0.1:8000/news">сайте</a>!'
+        # )
+        # msg = EmailMultiAlternatives(
+        #     subject=subject, body=text, from_email=None, to=[user.email]
+        # )
+        # msg.attach_alternative(html, "text/html")
+        # msg.send()
+        #
+        # return user
+
+
+# class CustomSignupForm(SignupForm):
+#     def save(self, request):
+#         user = super().save(request)
+#
+#         send_mail(
+#             subject='Добро пожаловать на новостной портал!',
+#             message=f'{user.username}, вы успешно зарегистрировались!',
+#             from_email=None,  # будет использовано значение DEFAULT_FROM_EMAIL
+#             recipient_list=[user.email],
+#         )
+#         return user

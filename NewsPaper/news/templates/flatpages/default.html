@@ -39,20 +39,17 @@
                <li class="nav-item">
                    <a class="nav-link" href="/search/">Search</a>
                </li>
-
        </div>
-
-                       <ul class="sidebar-nav">
+   </div>
+</nav>
+        <ul class="sidebar-nav">
                {% if user.is_authenticated %}
-               <li>User: {{ user.get_username }}</li>
-               <li><a href="accounts/logout">Logout</a></li>
+               <li><p style="color:#0066FF">User: {{ user.get_username }} <a href="http://127.0.0.1:8000/accounts/logout/">Logout</a></p>
+               </li>
                {% else %}
                <li><a href="{% url 'login'%}?next={{request.path}}"> <table>Login</table></a></li>
                {% endif %}
-           </ul>
-
-   </div>
-</nav>
+        </ul>
         <!-- Page content-->
         <div class="container">
            <div class="row">

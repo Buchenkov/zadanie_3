@@ -27,6 +27,7 @@ def send_notifications(preview, pk, title, subscribers):
     msg.attach_alternative(html_content, 'text/html')
     msg.send()
 
+
 @receiver(m2m_changed, sender=PostCategory)   # делает Ф сигналом
 def notify_about_new_post(sender, instance, **kwargs):
     """ Ф. сигнализирует о новой статье (когда добавляем категорию в статью и отправляем сообщение пользователям)"""
