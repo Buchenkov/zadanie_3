@@ -104,7 +104,8 @@ Shell
 11 Вывести все комментарии (дата, пользователь, рейтинг, текст) к этой статье.
     Post.objects.order_by('-rating')[0].comment_set.all().values('comment_time', 'comment_user__username', 'rating', 'text')
 
-
+========================================
+python manage.py runapscheduler
 ========================================
 git reset --hard HEAD^1     - откатится на один комит назад
 

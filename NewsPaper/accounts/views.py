@@ -46,9 +46,3 @@ class SignUp(CreateView):
 #     return redirect('login')
 
 
-# def logout_view(request):
-#     logout(request)
-#
-#
-# def login(request):
-#     login(request)

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.yandex',  # отвечает за выход через Yandex
     'subscriptions',
+    'django_apscheduler',
 ]
 
 SITE_ID = 1
@@ -193,9 +194,9 @@ MANAGERS = (
     # ('Petr', 'petr@yandex.ru'),
 )
 
-ADMINS = (
-    ('igor', 'igorchan@yandex.ru'),
-)
+# ADMINS = (
+#     ('igor', 'igorchan@yandex.ru'),   # текст в account/forms.py
+# )
 
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 APSCHEDULER_RUN_NOW_TIMEOUT = 25
