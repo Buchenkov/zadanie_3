@@ -148,7 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [BASE_DIR / 'static', ]
 
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5    # Ограничение попыток входа в систему
+# ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5    # Ограничение попыток входа в систему
 LOGIN_URL = '/account/login/'
 # LOGOUT_REDIRECT_URL = '/account/login/'
 LOGIN_REDIRECT_URL = "/"
@@ -168,8 +168,8 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True  # позволит избежать доп�
 # как только мы перейдём по ссылке.
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7  # хранит количество дней, когда доступна ссылка на подтверждение регистрации
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # который просто напечатает его в консоли.
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # который просто напечатает его в консоли.
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "igorchan"

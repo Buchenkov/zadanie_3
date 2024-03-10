@@ -30,8 +30,9 @@ def send_notifications(preview, pk, title, subscribers):
 
 @receiver(m2m_changed, sender=PostCategory)   # делает Ф сигналом
 def notify_about_new_post(sender, instance, **kwargs):
+    # print(kwargs['action'], '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     """ Ф. сигнализирует о новой статье (когда добавляем категорию в статью и отправляем сообщение пользователям)"""
-    if kwargs['action'] == 'post_create':
+    if kwargs['action'] == 'post_add':
         categories = instance.category.all()
         subscribers_emails = []
 

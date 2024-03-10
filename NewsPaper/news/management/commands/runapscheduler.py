@@ -80,7 +80,7 @@ class Command(BaseCommand):
         # добавляем работу нашему задачнику
         scheduler.add_job(
             my_job,
-            trigger=CronTrigger(),  # время рассылки day_of_week='sat', hour='12', minute='04', timezone=settings.TIME_ZONE
+            trigger=CronTrigger(day_of_week='fri', hour='18', minute='00'),  # время рассылки day_of_week='fri', hour='18', minute='00'
             # То же, что и интервал, но задача триггера таким образом более понятна django
             id="my_job",  # уникальный `id`
             max_instances=1,
