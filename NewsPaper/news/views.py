@@ -184,17 +184,5 @@ def subscribe(request, pk):
     return render(request, 'news/subscribe.html', {'category': category, 'message': message})
 
 
-# def PostDetail(DetailView):
-#     template_name = 'news/post_detail.html'
-#     queryset = Post.objects.all()
-#
-#     def get_object(self, *args, **kwargs):
-#         print(self.request.user.id)
-#         obj = cache.get(f'post-{self.kwargs["pk"]}', None)
-#         if not obj:
-#             obj = super().get_object(queryset=self.queryset)
-#             cache.set(f'post-{self.kwargs["pk"]}', obj)
-#
-#         return obj
 
 

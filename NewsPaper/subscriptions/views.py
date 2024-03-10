@@ -1,11 +1,14 @@
+from django.contrib.auth.models import Group
 from django.shortcuts import render
 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Exists, OuterRef
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_protect
+
+from news.views import NewsList
 from .models import Subscription
-from news.models import Category
+from news.models import Category, Post
 
 
 @login_required

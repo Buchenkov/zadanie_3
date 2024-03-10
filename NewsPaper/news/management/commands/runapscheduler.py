@@ -29,8 +29,7 @@ def my_job():
     posts = Post.objects.filter(post_time__gte=last_week)
     categories = set(posts.values_list('category__category_name', flat=True))
     subscribers = set(Category.objects.filter(category_name__in=categories).values_list('subscribers__email', flat=True))
-    # subscribers = set(Subscription.objects.filter(category__name__in=categories).values_list('user__email', flat=True))
-    # subscribers = set(Subscription.objects.filter(category__name__in=categories).values_list('subscriptions__user__email', flat=True))
+
 
     html_content = render_to_string(
         'daily_post.html',
@@ -49,7 +48,6 @@ def my_job():
 
     msg.attach_alternative(html_content, 'text/html')
     msg.send()
-
 
 
 # The `close_old_connections` decorator ensures that database connections,

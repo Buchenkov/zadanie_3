@@ -6,5 +6,5 @@ from .views import (subscriptions)
 
 urlpatterns = [
     path('subscriptions/', subscriptions, name='subscriptions'),
-    path('categories/<int:pk>/subscribe', subscribe, name='subscribe')
+    path('categories/<int:pk>/subscribe', subscribe, name='subscribe'),
 ]
