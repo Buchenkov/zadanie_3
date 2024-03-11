@@ -20,6 +20,7 @@ urlpatterns = [
    # path('news/post_detail/<int:pk>', PostDetail.as_view(), name='post_detail'),
    path('categories/<int:pk>', CategoryListView.as_view(), name='category_list'),  # страница категории и подписка
    path('categories/<int:pk>/subscribe', subscribe, name='subscribe'),  # подписка на категорию (успешно подписался)
+   path('test/', index),
 ]
 
 # urlpatterns = [

@@ -201,3 +201,15 @@ MANAGERS = (
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 APSCHEDULER_RUN_NOW_TIMEOUT = 25
 SITE_URL = 'http://127.0.0.1:8000'
+
+# ### Celery
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'    # 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+# * CELERY_BROKER_URL — указывает на URL брокера сообщений (Redis). По умолчанию он находится на порту 6379.
+# * CELERY_RESULT_BACKEND — указывает на хранилище результатов выполнения задач.
+# * CELERY_ACCEPT_CONTENT — допустимый формат данных.
+# * CELERY_TASK_SERIALIZER — метод сериализации задач.
+# * CELERY_RESULT_SERIALIZER — метод сериализации результатов.
