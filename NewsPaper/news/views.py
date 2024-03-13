@@ -10,7 +10,6 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, U
 from .filters import NewsFilter
 from .forms import PostForm
 from .models import *
-from .tasks import text
 
 
 class NewsList(ListView):
@@ -185,7 +184,5 @@ def subscribe(request, pk):
     return render(request, 'news/subscribe.html', {'category': category, 'message': message})
 
 
-def index(request):
-    text.delay()
-    return render(request, 'test.html')
+
 

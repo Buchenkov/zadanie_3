@@ -1,1 +1,14 @@
 celery -A project worker -l INFO
+celery -A project worker -l INFO --pool=solo        # этот вариант!
+celery -A NewsPaper worker -l INFO --pool=solo
+
+
+Для запуска периодических задач на Windows запустите в разных окнах терминала:
+celery -A PROJECT worker -l INFO
+и
+celery -A PROJECT beat -l INFO
+
+
+for Docker
+$ docker run -d -p 6379:6379 redis
+
