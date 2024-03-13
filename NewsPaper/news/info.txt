@@ -180,7 +180,14 @@ git reset --hard HEAD^1     - откатится на один комит наз
 
 
 
-
+        <ul class="sidebar-nav">
+               {% if user.is_authenticated %}
+               <li><p style="color:#0066FF">User: {{ user.get_username }} <a href="http://127.0.0.1:8000/accounts/logout/">Logout</a></p>
+               </li>
+               {% else %}
+               <li><a href="{% url 'login'%}?next={{request.path}}"> <table>Login</table></a></li>
+               {% endif %}
+        </ul>
 
 
 
