@@ -2,6 +2,7 @@ from django.urls import path
 from django.views.generic import detail
 
 from accounts import views
+from .tasks import weekly_send_email_task
 # Импортируем созданные нами представления
 from .views import *
 
@@ -20,7 +21,7 @@ urlpatterns = [
    # path('news/post_detail/<int:pk>', PostDetail.as_view(), name='post_detail'),
    path('categories/<int:pk>', CategoryListView.as_view(), name='category_list'),  # страница категории и подписка
    path('categories/<int:pk>/subscribe', subscribe, name='subscribe'),  # подписка на категорию (успешно подписался)
-   # path('test/', index),
+   path('', weekly_send_email_task, name='weekly_send_email_task'),   # еженедельная подписка через tasks и celery
 ]
 
 # urlpatterns = [

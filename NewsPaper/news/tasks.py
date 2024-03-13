@@ -47,17 +47,18 @@ def send_email_task(pk):
 
 
 @app.task
-def weekly_send_email_task(pk):
+def weekly_send_email_task(pk):  # Запуск из celery
     today = datetime.datetime.now()
     last_week = today - datetime.timedelta(days=7)
     posts = Post.objects.filter(post_time__gte=last_week)
-    categories = set(posts.values_list('postCategory__name', flat=True))
-    subscribers = set(Category.objects.filter(name__in=categories).values_list('subscribers__email', flat=True))
+    categories = set(posts.values_list('category__category_name', flat=True))
+    subscribers = set(Category.objects.filter(category_name__in=categories).values_list('subscribers__email', flat=True))
+
     html_content = render_to_string(
         'daily_post.html',
         {
-            'text': settings.SITE_URL,
-            'link': posts,
+            'link': settings.SITE_URL,
+            'posts': posts,
         }
     )
 

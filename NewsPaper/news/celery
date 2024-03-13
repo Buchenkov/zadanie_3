@@ -1,12 +1,11 @@
-celery -A project worker -l INFO
-celery -A project worker -l INFO --pool=solo        # этот вариант!
-celery -A NewsPaper worker -l INFO --pool=solo
+cd NewsPaper        # во всех (3) окнах
+python manage.py runserver
 
 
 Для запуска периодических задач на Windows запустите в разных окнах терминала:
-celery -A PROJECT worker -l INFO
+celery -A project worker -l INFO --pool=sol
 и
-celery -A PROJECT beat -l INFO
+celery -A project beat -l INFO
 
 
 for Docker
