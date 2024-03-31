@@ -65,12 +65,12 @@ class Post(models.Model):
         # return '{}'.format(self.title)
         return f'{self.title}'
 
-    def get_absolute_url(self):
+    def get_absolute_url(self):  # добавим абсолютный путь, чтобы после создания нас перебрасывало на страницу
         return reverse('post', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        cache.delete(f'post-{self.pk}')
+        super().save(*args, **kwargs)   # сначала вызываем метод родителя, чтобы объект сохранился
+        cache.delete(f'post-{self.pk}')  # затем удаляем его из кэша, чтобы сбросить его
 
 
 class PostCategory(models.Model):

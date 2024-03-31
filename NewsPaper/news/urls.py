@@ -1,6 +1,6 @@
 from django.urls import path
 from django.views.generic import detail
-
+from django.views.decorators.cache import cache_page
 from accounts import views
 from .tasks import weekly_send_email_task
 # Импортируем созданные нами представления
@@ -9,7 +9,7 @@ from .views import *
 urlpatterns = [
    path('', NewsList.as_view()),
    path('news/', NewsList.as_view(), name='news'),
-   path('news/<int:pk>/', PostView.as_view(), name='post'),
+   path('news/<int:pk>/', PostView.as_view(), name='post'),  # ,...cache_page(300)(PostView.as_view()), name='post'),
    path('search/', Search.as_view(), name='search'),
    path('news/post_create/', PostCreate.as_view(), name='post_create'),
    path('article/articles_create/', ArticleCreate.as_view(), name='articles_create'),

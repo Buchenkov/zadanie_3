@@ -10,7 +10,7 @@
     {% endif %}
 {% if posts %}
 <h2> Количество постов {{ posts|length }}</h2>
-<h3>{% current_time '%b %d %Y' %}</h3>
+<h3>{% current_time '%d %b %Y' %}</h3>
 
 <table width="110%" style="margin-top: 35px">
        <tr> <!-- Если вы хотите поместить ячейки столбцов в строчку, то открываете тег tr (TableRow) и в него добавляете ячейки (тег td) с содержанием того, что вам надо вывести.-->
@@ -36,7 +36,7 @@
 
         <td>{{ post.rating }}</td>
         {% for cat in post.category.all %}
-        <td>{{ cat.category_name }}</td>
+        <td><a href="{% url 'category_list' cat.id %}">{{ cat.category_name }}</a></td>
         {% endfor %}
          <td>
             {# А здесь доступ для каждой ссылки теперь будем проверять отдельно #}

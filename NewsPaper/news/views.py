@@ -165,8 +165,8 @@ class CategoryListView(NewsList):
         return context
 
 
-@login_required
-def upgrade_me(request):
+@login_required             # TODO — для того, чтобы не забыть просто что-то сделать.
+def upgrade_me(request):    # FIXME — для того, чтобы не забыть что-то исправить
     user = request.user
     premium_group = Group.objects.get(name='authors')
     if not request.user.groups.filter(name='authors').exists():
