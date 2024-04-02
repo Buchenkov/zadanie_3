@@ -35,9 +35,11 @@
         <td>{{ post.text|truncatewords:20|censor }}<a href="{% url 'post' post.id %}">Подробнее</a></td>
 
         <td>{{ post.rating }}</td>
-        {% for cat in post.category.all %}
-        <td><a href="{% url 'category_list' cat.id %}">{{ cat.category_name }}</a></td>
-        {% endfor %}
+        <td>
+            {% for category in post.category.all %}
+                <a href="{% url 'category_list' category.id %}">{{ category }}</a>
+            {% endfor %}
+        </td>
          <td>
             {# А здесь доступ для каждой ссылки теперь будем проверять отдельно #}
             {% if perms.news.add_post or perms.news.delete_post %}

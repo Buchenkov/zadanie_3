@@ -28,8 +28,12 @@ class Category(models.Model):
     category_name = models.CharField(max_length=64, unique=True)  # Категории новостей/статей
     subscribers = models.ManyToManyField(User, blank=True, null=True, related_name='categories')
 
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категория'
+
     def __str__(self):
-        return self.category_name
+        return f'{self.category_name}'
 
 
 class Post(models.Model):
@@ -43,7 +47,7 @@ class Post(models.Model):
         (ARTICLE, 'Статья'))
     post_type = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE)
     post_time = models.DateTimeField(auto_now_add=True)  # автоматически добавляемая дата и время создания;
-    category = models.ManyToManyField(Category, through='PostCategory')  # связь с моделью Category, PostCategory
+    category = models.ManyToManyField(Category, through='PostCategory', verbose_name='Категории')  # связь с моделью Category, PostCategory - промежуточная модель
     title = models.CharField(max_length=255)  # заголовок статьи/новости;
     text = models.TextField()  # текст статьи/новости;
     rating = models.IntegerField(default=0)  # рейтинг статьи/новости.
