@@ -1,0 +1,143 @@
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # По умолчанию Django использует некоторые из своих собственных логеров.
+    'formatters': {     # Этот раздел определяет, как будут выглядеть строки в логгах.
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+        'myformatter': {
+            'format': '{levelname} {message} {asctime}',
+            'datetime': '%Y.%m.%d. %H:%M:%S',
+            'style': '{',
+        },
+    },
+    'filters': {    # предоставляют дополнительный контроль над тем, какие сообщения будут переданы из логгера в обработчик
+        # 'special': {
+        #     '()': 'project.logging.SpecialFilter',
+        #     'foo': 'bar',
+        # },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {    # так что бы письма отправлялись только когда отключен режим DEBUG то есть установлен DEBUG=False
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {   # ошибки в зависимости от уровня попадают ->
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',  # как обрабатывается - в файл
+            'filename': 'debug.log',
+            'formatter': 'verbose',
+            # 'filters': ['require_debug_false'],
+        },
+        'mail_admins': {
+            'level': 'ERROR',   # фильтруется ещё после 'loggers':
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'format_warning_mail',
+            # 'filters': ['special']
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],  # куда и какие ошибки
+            'propagate': True,  # Если установлено в False - то дальше сообщение не пойдет
+        },
+        'django.request': {
+            'handlers': ['console', 'file', 'mail_admins'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    }
+}
+
+
+
+
+
+
+
+
+ LOGGING = {
+#     'version': 1,   # единственный вариант
+#     'disable_existing_logger': False,   # джанговский логгер
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console', 'news'],    # ['console', 'news'],  # большой вывод в консоль
+#             'level': 'DEBUG',
+#         },
+#     },
+#     'handlers': {   # обработка
+#         'console': {    # вывод в консоль
+#             'level': 'INFO',
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'myformatter',
+#         },
+#         'news': {
+#             'level': 'INFO',
+#             'class': 'logging.FileHandler',  # как обрабатывается - в файл
+#             'filename': 'debug.log',
+#             'formatter': 'myformatter',
+#             # 'filters': ['require_debug_false'],
+#         },
+#     },
+#     'formatters': {
+#         'myformatter': {
+#             'format': '{levelname} {message} {asctime}',
+#             'datetime': '%Y.%m.%d. %H:%M:%S',
+#             'style': '{',
+#         },
+#     },
+#     'filters': {    # Далее определен фильтр, который пропускает записи только в случае, когда DEBUG = True.
+#         'require_debug_false': {
+#             '()': 'django.utils.log.RequireDebugFalse',   # обрабатывать если debug - false
+#         },
+#         'require_debug_true': {
+#             '()': 'django.utils.log.RequireDebugTrue',    # обрабатывать если debug - True
+#         },
+#     },
+# }
+
+#
+# TEST_LOGGER_NAME = 'test_logger'
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#
+#     'formatters': {
+#         'full': {
+#             'format': '[{module} {asctime} {levelname}] {message}',
+#             'style': '{',
+#         },
+#     },
+#
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'full',
+#         },
+#     },
+#
+#     'loggers': {
+#         TEST_LOGGER_NAME: {
+#             'handlers': ['console'],
+#             'level': 'INFO',
+#             'propagate': True,
+#         },
+#     }
+# }
+#
+# test_logger = logging.getLogger(TEST_LOGGER_NAME)

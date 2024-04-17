@@ -11,6 +11,16 @@ from .filters import NewsFilter
 from .forms import PostForm
 from .models import *
 
+import logging
+
+
+logger = logging.getLogger(__name__)
+
+def index(request):   # при переходе по определённому урлу
+    logger.info('INFO')
+    # news = Post.objects.all()
+    # return render(request, 'default.html', context={'news': news})
+
 
 class NewsList(ListView):
     # Указываем модель, объекты которой мы будем выводить

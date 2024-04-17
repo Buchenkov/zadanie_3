@@ -1,0 +1,6 @@
+2024-04-17 21:10:00,775 INFO "GET /news/ HTTP/1.1" 200 12735 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None 
+2024-04-17 21:11:33,960 WARNING Not Found: /search/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py None 
+2024-04-17 21:11:33,961 WARNING "GET /search/ HTTP/1.1" 404 6763 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None 
+2024-04-17 21:11:52,419 INFO "GET /search/ HTTP/1.1" 200 3608 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None 
+2024-04-17 21:12:01,577 INFO "GET /search/?title__icontains=&added_after= HTTP/1.1" 200 25499 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None 
+2024-04-17 21:12:03,356 INFO "GET /news/ HTTP/1.1" 200 12735 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None 

@@ -52,12 +52,16 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    # Пожалуй, один из главных промежуточных слоев, потому что он реализует различные проверки безопасности — XSS, nosniff, HSTS, CORS, поддержка SSL и т. д.
+    'django.contrib.sessions.middleware.SessionMiddleware',  # Включает механизм сессий в разрабатываемом приложении.
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # Рекомендуемый для использования во всех Django-проектах, потому что он позволяет выполнять стандартные процедуры над URL
+    'django.middleware.csrf.CsrfViewMiddleware',  # Включает проверку безопасности от угроз типа CSRF.
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # Реализует основы аутентификации и идентификации.
     'django.contrib.messages.middleware.MessageMiddleware',
+    # Включает поддержку сообщений, лежащих в основе работы с куки и сессиями.
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # обеспечивают простую в использовании защиту от  кликджекинга
     'allauth.account.middleware.AccountMiddleware',
 ]
 
@@ -106,6 +110,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'NewsPaper',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     },
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -189,21 +205,20 @@ DEFAULT_FROM_EMAIL = "igorchan@yandex.ru"
 
 
 SERVER_EMAIL = "igorchan@yandex.ru"
-MANAGERS = (
+MANAGERS = [
     ('igor', 'igorchan@mail.ru'),
-    # ('Petr', 'petr@yandex.ru'),
-)
+]
 
-# ADMINS = (
-#     ('igor', 'igorchan@yandex.ru'),   # текст в account/forms.py
-# )
+ADMINS = (
+    ('igor', 'igorchan@yandex.ru'),  # текст в account/forms.py
+)
 
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 APSCHEDULER_RUN_NOW_TIMEOUT = 25
 SITE_URL = 'http://127.0.0.1:8000'
 
 # ### Celery
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379'    # 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'  # 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
@@ -222,3 +237,195 @@ CELERY_RESULT_SERIALIZER = 'json'
 #         # 'TIMEOUT': 60,
 #     }
 # }
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'format_debug': {
+            'format': '{levelname} {asctime} {message}',
+            'style': '{',
+        },
+
+        'format_warning_mail': {
+            'format': '{levelname} {asctime} {message} {pathname} ',
+            'style': '{',
+        },
+
+        'format_general_security_info': {
+            'format': '{levelname} {asctime} {message} {module} ',
+            'style': '{',
+        },
+
+        'format_error_critical': {
+            'format': '{levelname} {asctime} {message} {pathname} {exc_info}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console_debug': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'format_debug',
+        },
+
+        'console_warning': {
+            'level': 'WARNING',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'format_warning_mail',
+        },
+
+        'console_gen_sec_info': {
+            'level': 'INFO',
+            'filters': ['require_debug_false'],
+            'class': 'logging.FileHandler',
+            'formatter': 'format_general_security_info',
+            'filename': 'general.log',
+        },
+
+        'console_error_critical': {
+            'level': 'ERROR',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'format_error_critical',
+        },
+
+        'errors_file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'formatter': 'format_error_critical',
+            'filename': 'errors.log',
+        },
+
+        'security_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'formatter': 'format_general_security_info',
+            'filename': 'security.log',
+        },
+
+        'mail_admins': {
+            'level': 'INFO',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'format_warning_mail',
+        },
+    },
+
+    'filters': {
+        'require_debug_false': {'()': 'django.utils.log.RequireDebugFalse'},
+        'require_debug_true': {'()': 'django.utils.log.RequireDebugTrue'},
+    },
+
+    'loggers': {
+        'django': {
+            'handlers': ['console_debug', 'console_warning', 'console_gen_sec_info', 'console_error_critical'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+
+        'django.request': {
+            'handlers': ['errors_file', 'mail_admins'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+
+        'django.server': {
+            'handlers': ['errors_file', 'mail_admins'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+
+        'django.template': {
+            'handlers': ['errors_file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+
+        'django.db.backends': {
+            'handlers': ['errors_file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+
+        'django.security': {
+            'handlers': ['security_file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    }
+}
+
+# LOGGING = {
+#     'version': 1,   # единственный вариант
+#     'disable_existing_logger': False,   # джанговский логгер
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console', 'news'],    # ['console', 'news'],  # большой вывод в консоль
+#             'level': 'DEBUG',
+#         },
+#     },
+#     'handlers': {   # обработка
+#         'console': {    # вывод в консоль
+#             'level': 'INFO',
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'myformatter',
+#         },
+#         'news': {
+#             'level': 'INFO',
+#             'class': 'logging.FileHandler',  # как обрабатывается - в файл
+#             'filename': 'debug.log',
+#             'formatter': 'myformatter',
+#             # 'filters': ['require_debug_false'],
+#         },
+#     },
+#     'formatters': {
+#         'myformatter': {
+#             'format': '{levelname} {message} {asctime}',
+#             'datetime': '%Y.%m.%d. %H:%M:%S',
+#             'style': '{',
+#         },
+#     },
+#     'filters': {    # Далее определен фильтр, который пропускает записи только в случае, когда DEBUG = True.
+#         'require_debug_false': {
+#             '()': 'django.utils.log.RequireDebugFalse',   # обрабатывать если debug - false
+#         },
+#         'require_debug_true': {
+#             '()': 'django.utils.log.RequireDebugTrue',    # обрабатывать если debug - True
+#         },
+#     },
+# }
+
+#
+# TEST_LOGGER_NAME = 'test_logger'
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#
+#     'formatters': {
+#         'full': {
+#             'format': '[{module} {asctime} {levelname}] {message}',
+#             'style': '{',
+#         },
+#     },
+#
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'full',
+#         },
+#     },
+#
+#     'loggers': {
+#         TEST_LOGGER_NAME: {
+#             'handlers': ['console'],
+#             'level': 'INFO',
+#             'propagate': True,
+#         },
+#     }
+# }
+#
+# test_logger = logging.getLogger(TEST_LOGGER_NAME)
