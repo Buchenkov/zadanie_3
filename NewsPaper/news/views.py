@@ -10,16 +10,21 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, U
 from .filters import NewsFilter
 from .forms import PostForm
 from .models import *
-
+from django.http import HttpResponse
 import logging
-
 
 logger = logging.getLogger(__name__)
 
-def index(request):   # при переходе по определённому урлу
+
+def index(request):  # при переходе по определённому урлу
     logger.info('INFO')
     # news = Post.objects.all()
     # return render(request, 'default.html', context={'news': news})
+
+
+def my_test_500_view(request):
+    # Return an "Internal Server Error" 500 response code.
+    return HttpResponse(status=500)
 
 
 class NewsList(ListView):
@@ -168,7 +173,7 @@ class CategoryListView(NewsList):
         queryset = Post.objects.filter(category=self.category).order_by('-post_time')
         return queryset
 
-    def get_context_data(self, **kwargs):   # для кнопки подписаться
+    def get_context_data(self, **kwargs):  # для кнопки подписаться
         context = super().get_context_data(**kwargs)
         context['is_not_subscriber'] = self.request.user not in self.category.subscribers.all()
         context['category'] = self.category
@@ -192,7 +197,3 @@ def subscribe(request, pk):
 
     message = 'Вы успешно подписались на рассылку новостей категории'
     return render(request, 'news/subscribe.html', {'category': category, 'message': message})
-
-
-
-

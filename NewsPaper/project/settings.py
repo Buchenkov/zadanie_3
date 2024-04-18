@@ -24,7 +24,8 @@ SECRET_KEY = 'django-insecure-82ab0rp+q!0_t0^vkkvt&xoyo4)2htg2@bewl*=c0302icxomc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # для - DEBUG = False
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -242,27 +243,29 @@ CELERY_RESULT_SERIALIZER = 'json'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    # средства форматирования
     'formatters': {
         'format_debug': {
-            'format': '{levelname} {asctime} {message}',
+            'format': '{asctime} {levelname} {message}',
             'style': '{',
         },
 
         'format_warning_mail': {
-            'format': '{levelname} {asctime} {message} {pathname} ',
+            'format': '{asctime} {levelname} {message} {pathname} ',
             'style': '{',
         },
 
         'format_general_security_info': {
-            'format': '{levelname} {asctime} {message} {module} ',
+            'format': '{asctime} {levelname} {message} {module} ',
             'style': '{',
         },
 
         'format_error_critical': {
-            'format': '{levelname} {asctime} {message} {pathname} {exc_info}',
+            'format': '{asctime} {levelname} {message} {pathname} {exc_info}',
             'style': '{',
         },
     },
+    # обработчики
     'handlers': {
         'console_debug': {
             'level': 'DEBUG',
@@ -308,46 +311,46 @@ LOGGING = {
         },
 
         'mail_admins': {
-            'level': 'INFO',
+            'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler',
             'formatter': 'format_warning_mail',
         },
     },
-
+    # фильтры
     'filters': {
         'require_debug_false': {'()': 'django.utils.log.RequireDebugFalse'},
         'require_debug_true': {'()': 'django.utils.log.RequireDebugTrue'},
     },
-
+    # регистраторы
     'loggers': {
         'django': {
             'handlers': ['console_debug', 'console_warning', 'console_gen_sec_info', 'console_error_critical'],
-            'level': 'INFO',
+            'level': 'DEBUG',
             'propagate': True,
         },
 
-        'django.request': {
+        'django.request': {     # Этот логгер обрабатывает все сообщения вызванные HTTP-запросами и вызывает исключения для определенных кодов состояния. Все коды ошибок HTTP 5xx будут вызывать сообщения об ERROR. Аналогичным образом, коды HTTP 4xx будут отображаться в виде WARNING
             'handlers': ['errors_file', 'mail_admins'],
-            'level': 'INFO',
+            'level': 'ERROR',
             'propagate': True,
         },
 
-        'django.server': {
+        'django.server': {      # Когда сервер запускается с помощью команды runserver, он будет регистрировать сообщения, связанные с обработкой этих запросов
             'handlers': ['errors_file', 'mail_admins'],
-            'level': 'INFO',
+            'level': 'ERROR',
             'propagate': True,
         },
 
         'django.template': {
             'handlers': ['errors_file'],
-            'level': 'INFO',
+            'level': 'ERROR',
             'propagate': True,
         },
 
         'django.db.backends': {
             'handlers': ['errors_file'],
-            'level': 'INFO',
+            'level': 'ERROR',
             'propagate': True,
         },
 
