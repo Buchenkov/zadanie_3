@@ -1,8 +1,9 @@
-from allauth.account.views import logout
+import logging
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import Group
-from django.core.cache import cache
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
@@ -10,21 +11,19 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, U
 from .filters import NewsFilter
 from .forms import PostForm
 from .models import *
-from django.http import HttpResponse
-import logging
 
 logger = logging.getLogger(__name__)
 
 
 def index(request):  # при переходе по определённому урлу
     logger.info('INFO')
-    # news = Post.objects.all()
-    # return render(request, 'default.html', context={'news': news})
+    news = Post.objects.all()
+    return render(request, 'default.html', context={'news': news})
 
 
-def my_test_500_view(request):
-    # Return an "Internal Server Error" 500 response code.
-    return HttpResponse(status=500)
+# def my_test_500_view(request):
+#     # Return an "Internal Server Error" 500 response code.
+#     return HttpResponse(status=500)
 
 
 class NewsList(ListView):
