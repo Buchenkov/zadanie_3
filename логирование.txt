@@ -111,33 +111,3 @@ LOGGING = {
 #     },
 # }
 
-#
-# TEST_LOGGER_NAME = 'test_logger'
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#
-#     'formatters': {
-#         'full': {
-#             'format': '[{module} {asctime} {levelname}] {message}',
-#             'style': '{',
-#         },
-#     },
-#
-#     'handlers': {
-#         'console': {
-#             'class': 'logging.StreamHandler',
-#             'formatter': 'full',
-#         },
-#     },
-#
-#     'loggers': {
-#         TEST_LOGGER_NAME: {
-#             'handlers': ['console'],
-#             'level': 'INFO',
-#             'propagate': True,
-#         },
-#     }
-# }
-#
-# test_logger = logging.getLogger(TEST_LOGGER_NAME)
