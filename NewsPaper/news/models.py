@@ -5,11 +5,14 @@ from django.db.models import Sum
 from django.db.models.functions import Coalesce
 from django.urls import reverse
 
+from django.utils.translation import gettext as _
+from django.utils.translation import pgettext_lazy    # импортируем «ленивый» геттекст с подсказкой
+
 from datetime import datetime
 
 
 class Author(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)  # связь с встроенной моделью пользователей User;
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, help_text=_('category name'))  # связь с встроенной моделью пользователей User;
     ratingAuthor = models.SmallIntegerField(default=0)  # рейтинг пользователя
 
     def __str__(self):
@@ -51,6 +54,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)  # заголовок статьи/новости;
     text = models.TextField()  # текст статьи/новости;
     rating = models.IntegerField(default=0)  # рейтинг статьи/новости.
+    verbose_name = pgettext_lazy('help text for MyModel model', 'This is the help text'),
     # slug = models.SlugField(max_length=128, unique=True)    # !
 
     def preview(self):  # возвращает начало статьи (предварительный просмотр)

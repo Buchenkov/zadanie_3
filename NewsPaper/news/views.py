@@ -6,11 +6,28 @@ from django.contrib.auth.models import Group
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
 from .filters import NewsFilter
 from .forms import PostForm
 from .models import *
+
+from django.utils.translation import gettext as _  # импортируем функцию для перевода
+
+
+# Create your views here.
+
+class Index(View):
+    def get(self, request):
+        string = _('Hello world')
+
+        # return HttpResponse(string)
+
+        context = {'string': string}
+
+        return HttpResponse(render(request, 'default.html'))
+
 
 logger = logging.getLogger(__name__)
 

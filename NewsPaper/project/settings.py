@@ -55,14 +55,15 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     # Пожалуй, один из главных промежуточных слоев, потому что он реализует различные проверки безопасности — XSS, nosniff, HSTS, CORS, поддержка SSL и т. д.
     'django.contrib.sessions.middleware.SessionMiddleware',  # Включает механизм сессий в разрабатываемом приложении.
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',  # для пакета gettext
     # Рекомендуемый для использования во всех Django-проектах, потому что он позволяет выполнять стандартные процедуры над URL
     'django.middleware.csrf.CsrfViewMiddleware',  # Включает проверку безопасности от угроз типа CSRF.
     'django.contrib.auth.middleware.AuthenticationMiddleware',  # Реализует основы аутентификации и идентификации.
     'django.contrib.messages.middleware.MessageMiddleware',
     # Включает поддержку сообщений, лежащих в основе работы с куки и сессиями.
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # обеспечивают простую в использовании защиту от  кликджекинга
+    # обеспечивают простую в использовании защиту от кликджекинга
     'allauth.account.middleware.AccountMiddleware',
 ]
 
@@ -77,6 +78,14 @@ MIDDLEWARE = [
 # }
 
 ROOT_URLCONF = 'project.urls'
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]
+LANGUAGES = [
+    ('en', 'English'),
+    ('ru', 'Russian'),
+]
 
 TEMPLATES = [
     {
@@ -145,11 +154,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+USE_I18N = True  # интернационализация
 
 USE_TZ = True
 
@@ -268,7 +278,7 @@ LOGGING = {
     # обработчики
     'handlers': {
         'console_debug': {
-            'level': 'DEBUG',
+            'level': 'INFO',   # 'DEBUG'
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'format_debug',
@@ -326,17 +336,19 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console_debug', 'console_warning', 'console_gen_sec_info', 'console_error_critical'],
-            'level': 'DEBUG',
+            'level': 'INFO',   # 'DEBUG'
             'propagate': True,
         },
 
-        'django.request': {     # Этот логгер обрабатывает все сообщения вызванные HTTP-запросами и вызывает исключения для определенных кодов состояния. Все коды ошибок HTTP 5xx будут вызывать сообщения об ERROR. Аналогичным образом, коды HTTP 4xx будут отображаться в виде WARNING
+        'django.request': {
+            # Этот логгер обрабатывает все сообщения вызванные HTTP-запросами и вызывает исключения для определенных кодов состояния. Все коды ошибок HTTP 5xx будут вызывать сообщения об ERROR. Аналогичным образом, коды HTTP 4xx будут отображаться в виде WARNING
             'handlers': ['errors_file', 'mail_admins'],
             'level': 'ERROR',
             'propagate': True,
         },
 
-        'django.server': {      # Когда сервер запускается с помощью команды runserver, он будет регистрировать сообщения, связанные с обработкой этих запросов
+        'django.server': {
+            # Когда сервер запускается с помощью команды runserver, он будет регистрировать сообщения, связанные с обработкой этих запросов
             'handlers': ['errors_file', 'mail_admins'],
             'level': 'ERROR',
             'propagate': True,

@@ -10,7 +10,7 @@ def current_time(format_string='%b %d %Y'):
     return datetime.now().strftime(format_string)
 
 
-# ег, который будет брать текущие параметры запроса и по
+# тег, который будет брать текущие параметры запроса и по
 # указанному аргументу производить замену, не очищая остальные параметры.
 @register.simple_tag(takes_context=True)
 def url_replace(context, **kwargs):

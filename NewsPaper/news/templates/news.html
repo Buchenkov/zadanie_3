@@ -1,6 +1,7 @@
 {% extends 'flatpages/default.html' %}
 {% load custom_filters %}
 {% load custom_tags %}
+{% load i18n %} <!-- Загружаем теги с переводами, без этой строки ничего не будет работать -->
 
 
 <!-- Название у нас будет ... -->
@@ -9,18 +10,18 @@
         <button><a href="{% url 'upgrade' %}">Стать автором</a></button>
     {% endif %}
 {% if posts %}
-<h2> Количество постов {{ posts|length }}</h2>
+<h2> {% trans "Number of posts" %} {{ posts|length }}</h2>
 <h3>{% current_time '%d %b %Y' %}</h3>
 
 <table width="110%" style="margin-top: 35px">
        <tr> <!-- Если вы хотите поместить ячейки столбцов в строчку, то открываете тег tr (TableRow) и в него добавляете ячейки (тег td) с содержанием того, что вам надо вывести.-->
-            <td><h4><u>Заголовок</u></h4></td>
-            <td><h4><u>Дата и автор публикации</u></h4></td>
-            <td><h4><u>Содержание</u></h4></td>
-            <td><h4><u>Рейтинг</u></h4></td>
-            <td><h4><u> Категория </u></h4></td>
+            <td><h4><u>{% trans "Heading" %}</u></h4></td>
+            <td><h4><u>{% trans "Date and author of the publication" %}</u></h4></td>
+            <td><h4><u>{% trans "Content" %}</u></h4></td>
+            <td><h4><u>{% trans "Rating" %}</u></h4></td>
+            <td><h4><u>{% trans "Category" %}</u></h4></td>
            {% if perms.news.add_post or perms.news.delete_post %}
-           <td><h4><u>Действия</u></h4></td>
+           <td><h4><u>{% trans "Actions" %}</u></h4></td>
            {% endif %}
         </tr>
     {% for post in posts %}
@@ -32,7 +33,7 @@
 </style>
         <td>{{ post.title }}</td>
         <td>{{ post.post_time|date:'d M Y'}} - {{ post.author }}</td>
-        <td>{{ post.text|truncatewords:20|censor }}<a href="{% url 'post' post.id %}">Подробнее</a></td>
+        <td>{{ post.text|truncatewords:20|censor }}<a href="{% url 'post' post.id %}">{% trans "More detailed" %}</a></td>
 
         <td>{{ post.rating }}</td>
         <td>
@@ -43,10 +44,10 @@
          <td>
             {# А здесь доступ для каждой ссылки теперь будем проверять отдельно #}
             {% if perms.news.add_post or perms.news.delete_post %}
-            <a href="{% url 'news_edit' post.id %}">Изменить</a>
+            <a href="{% url 'news_edit' post.id %}">{% trans "To change" %}</a>
             {% endif %}
             {% if perms.news.add_post or perms.news.delete_post %}
-            <a href="{% url 'news_delete' post.id %}">Удалить</a>
+            <a href="{% url 'news_delete' post.id %}">{% trans "Remove" %}</a>
             {% endif %}
             {% comment %}<hr>{% endcomment %}
         </td>

@@ -1,16 +1,17 @@
 {% extends 'flatpages/default.html' %}
 {% load custom_filters %}
 {% load custom_tags %}
+{% load i18n %} <!-- Загружаем теги с переводами, без этой строки ничего не будет работать -->
 
 {% block content %}
 {% if post %}
 <table width="100%" style="margin-top: 35px">
     <tr>
-        <td><u>Заголовок</u></td>
-        <td><u>Дата публикации</u></td>
-        <td><u>Содержание</u></td>
-        <td><u>Рейтинг</u></td>
-        <td><u>Категория</u></td>
+        <td><u>{% trans "Heading" %}</u></td>
+        <td><u>{% trans "Date" %}</u></td>
+        <td><u>{% trans "Content" %}</u></td>
+        <td><u>{% trans "Rating" %}</u></td>
+        <td><u>{% trans "Category" %}</u></td>
     </tr>
     <tr>
         <td>{{ post.title }}</td>
@@ -23,7 +24,7 @@
     </tr>
 </table>
 {% else %}
-<h3>Публикаций нет!</h3>
+<h3>{% trans "There are no publications!" %}"</h3>
 {% endif %}
 {% endblock content %}
 

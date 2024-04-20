@@ -1,0 +1,206 @@
+Для того чтобы создать файл перевода на какой-либо язык, надо ввести следующую команду в терминале в папке с manage.py файлом:
+python manage.py makemessages -l ru
+
+
+# <путь к файлу в котором вызвана функция gettext, либо же особый тег в шаблонах(о них чуть позже)>
+msgid: «<оригинальный текст>»
+msgstr: «<текст с переводом на нужный язык>»
+
+
+После чего нам надо выполнить следующую команду:
+python manage.py compilemessages
+Теперь у нас появился в той же директории, что и django.po, новый файл — django.mo.
+
+
+settings.py
+LANGUAGE_CODE = 'ru'
+
+
+Функция gettext представлена в нескольких вариантах.
+
+Есть, например, вариант, оставляющий контекстуальные подсказки для переводчиков, или же «ленивый» перевод. «Ленивый» перевод будет осуществляться только тогда, когда нужен будет доступ непосредственно к переводимому тексту. Кстати говоря, статический перевод может осуществлять также и для моделей. На примере с подсказкой, в каком контексте надо перевести ту или иную строку, можно увидеть следующее:
+
+from django.db import models
+from django.utils.translation import gettext as _
+from django.utils.translation import pgettext_lazy # импортируем «ленивый» геттекст с подсказкой
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, help_text=_('category name')) # добавим переводящийся текст подсказку к полю
+
+
+class MyModel(models.Model):
+    name = models.CharField(max_length=100)
+    kind = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name='kinds',
+        verbose_name=pgettext_lazy('help text for MyModel model', 'This is the help text'),
+    )
+
+В результате при выполнении команды makemessages мы увидим следующее:
+
+msgctxt "month name" — здесь строка подсказка
+msgid "May"
+msgstr ""
+Что касательно модели Category, то её help_text — это подсказка, которая отображается в админке при создании нового объекта.
+
+
+
+
+Давайте теперь сделаем перевод.
+
+python manage.py makemessages -l ru
+Затем записываем в сгенерированный файл django.po следующее:
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-12 20:58+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
+"100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\basic\models.py:7
+msgid "category name"
+msgstr "Имя категории"
+
+#: .\basic\models.py:16
+msgctxt "help text for MyModel model"
+msgid "This is the help text"
+msgstr "Это вспомогательный текст"
+
+#: .\basic\views.py:13
+msgid "Hello world"
+msgstr "Привет мир"
+
+#: .\templates\index.html:28
+msgid "Check out my new cool translation"
+msgstr "Оцени мой классный перевод"
+
+
+Затем компилируем этот перевод.
+
+python manage.py compilemessages
+
+
+
+В шаблоне перед вашим HTML-кодом надо прописать:
+
+{% load i18n %}
+Теперь вам будет доступен тэг для перевода, который формируется примерно так:
+
+{% trans "<Текст, который нужно перевести>" <дополнительные аргументы>  %}!
+К дополнительным аргументам здесь можно отнести, например, noop:
+
+{% trans "myvar" noop %}
+Noop в данном случае срабатывает как заглушка, переводя переменную myvar, перевод которой пока не готов.
+
+{% trans "I will translate that" as trans_var %}
+В данном случае текст, записанный в кавычках, переведётся и запишется в переменную trans_var, которую в дальнейшем можно будет использовать в шаблоне.
+
+Давайте теперь немножко поменяем наше представление (view) и попробуем посмотреть на перевод в шаблонах.
+
+{% load i18n %} <!-- Загружаем теги с переводами, без этой строки ничего не будет работать -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page title</title>
+</head>
+<body>
+    {{ string }} <!-- Это уже знакомая нам переменная, просто засунули её в шаблон -->
+    {% trans "Check out my new cool translation" %}! <!-- Переводим строку -->
+</body>
+</html>
+
+
+
+Если вдруг у вас что-то не заработало, то попробуйте проверить язык браузера, у вас должен стоять русский!
+
+Таким образом осуществляются переводы, т. е. сервер сам определяет язык браузера (через заголовки, которые тот ему передаёт вместе с запросом) и в результате возвращает страничку именно на нужном вам языке. Но такой вариант подходит не многим, всё-таки конечному пользователю желательно было бы иметь возможность переключать язык самостоятельно, для этого можно написать переключатель языков.
+
+Давайте этим и займёмся. Допишем наш шаблон:
+
+{% load i18n %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page title</title>
+</head>
+<body>
+    <form action="{% url 'set_language' %}" method="POST"> {% csrf_token %} <!-- Не забываем по csrf_token для POST запросов -->
+        <input type="hidden" name="next" value="{{ redirect_to }}">
+        {% get_current_language as LANGUAGE_CODE %}
+        <select name="language" id="">
+            {% get_available_languages as LANGUAGES %} <!-- получаем языки -->
+            {% get_language_info_list for LANGUAGES as languages %} <!-- Помещаем их в список languages -->
+
+            {% for language in languages %} <!-- Итерируясь по списку, выводим их название на языке пользователя и код -->
+                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                    {{ language.name_local }} - {{ language.code }}
+                </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="set">
+    </form>
+
+    {{ string }} <!-- Это уже знакомая нам переменная, просто засунули её в шаблон -->
+    {% trans "Check out my new cool translation" %}! <!-- Переводим строку -->
+</body>
+</html>
+Теперь надо только подключить в наш urls.py эндпоинты для переключения языка, делается это очень просто:
+
+project/urls.py
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')), # подключаем встроенные эндопинты для работы с локализацией
+    path('admin/', admin.site.urls),
+    path('', include('basic.urls')),
+]
+
+
+Начнём с самого главного — нам надо установить приложение, которое позволяет делать удобные переводы в моделях.
+
+pip install django-modeltranslation
+После того как мы его установили, его надо включить в настройках в установленных приложениях.
+
+INSTALLED_APPS = [
+    'modeltranslation', # обязательно впишите его перед админом
+
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    'basic',
+]
+Также в настройках должны быть указаны языки, на которые надо переводить наше приложение. Например, с прошлого юнита у вас должны стоять русский и английский языки.
+
+LANGUAGES = [
+    ('en-us', 'English'),
+    ('ru', 'Русский')
+]
