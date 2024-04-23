@@ -4,6 +4,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
@@ -16,21 +17,28 @@
     <body style="background-color: #dcdcdc">
         <!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-           <form action="{% url 'set_language' %}" method="POST"> {% csrf_token %} <!-- Не забываем по csrf_token для POST запросов -->
-            <input type="hidden" name="next" value="{{ redirect_to }}">
-            {% get_current_language as LANGUAGE_CODE %}
-            <select name="language" id="">
-                {% get_available_languages as LANGUAGES %} <!-- получаем языки -->
-                {% get_language_info_list for LANGUAGES as languages %} <!-- Помещаем их в список languages -->
+    <form action="{% url 'set_language' %}" method="POST"> {% csrf_token %} <!-- Не забываем по csrf_token для POST-запросов -->
+        <input type="hidden" name="next" value="{{ redirect_to }}">
 
-                {% for language in languages %} <!-- Итерируясь по списку, выводим их название на языке пользователя и код -->
-                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
-                        {{ language.name_local }} - {{ language.code }}
-                    </option>
-                {% endfor %}
-            </select>
-            <input type="submit" value="set">
-            </form>
+        <select name="language" id="">
+            {% get_available_languages as LANGUAGES %} <!-- получаем языки -->
+            {% get_language_info_list for LANGUAGES as languages %} <!-- Помещаем их в список languages -->
+
+            {% for language in languages %} <!-- Итерируясь по списку, выводим их название на языке пользователя и код -->
+                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %} >
+                    {{ language.name_local }} - {{ language.code }}
+                </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="set">
+    </form>
+
+    {% for model in models %}
+    <div class="model-class">
+        {{ model.name }}
+    </div>
+    {% endfor %}
+
    <div class="container">
        <a class="navbar-brand" href="/news/">{% trans "News" %}</a>
        <button class="navbar-toggler" type="button" data-toggle="collapse"

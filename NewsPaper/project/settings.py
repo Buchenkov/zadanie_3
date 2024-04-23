@@ -30,6 +30,8 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # для - DEBUG = False
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',   # обязательно впишите его перед админом
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,9 +84,10 @@ ROOT_URLCONF = 'project.urls'
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale')
 ]
+
 LANGUAGES = [
-    ('en', 'English'),
-    ('ru', 'Russian'),
+    ('en-us', 'English'),
+    ('ru', 'Русский')
 ]
 
 TEMPLATES = [

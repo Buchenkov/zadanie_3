@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from .models import *
+from modeltranslation.admin import TranslationAdmin    # импортируем модель амдинки (вспоминаем модуль про переопределение стандартных админ-инструментов)
 
 
 # напишем функцию для обнуления новостей
@@ -25,6 +26,14 @@ class PostAdmin(admin.ModelAdmin):
 
     def subject_post(self, obj):
         return ', '.join([category.category_name for category in obj.category.all()])
+
+
+class CategoryAdmin(TranslationAdmin):
+    model = Category
+
+
+class MyModelAdmin(TranslationAdmin):
+    model = Post
 
 
 # Register your models here.

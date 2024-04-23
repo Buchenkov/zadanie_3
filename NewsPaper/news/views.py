@@ -20,13 +20,14 @@ from django.utils.translation import gettext as _  # импортируем фу
 
 class Index(View):
     def get(self, request):
-        string = _('Hello world')
+        # . Translators: This message appears on the home page only
+        models = Post.objects.all()
 
-        # return HttpResponse(string)
+        context = {
+            'models': models,
+        }
 
-        context = {'string': string}
-
-        return HttpResponse(render(request, 'default.html'))
+        return HttpResponse(render(request, 'default.html', context))
 
 
 logger = logging.getLogger(__name__)
