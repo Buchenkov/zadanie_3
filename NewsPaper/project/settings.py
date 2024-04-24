@@ -67,6 +67,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # обеспечивают простую в использовании защиту от кликджекинга
     'allauth.account.middleware.AccountMiddleware',
+    'news.middlewares.TimezoneMiddleware',   # add that middleware!
 ]
 
 # SOCIALACCOUNT_PROVIDERS = {   # ещё вариант, не через админку

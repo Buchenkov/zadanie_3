@@ -791,3 +791,88 @@ Traceback (most recent call last):
     raise self.error(
 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 10: 'trans"Save"', expected 'endblock'. Did you forget to register or load this tag?
 2024-04-20 16:36:09,911 ERROR "GET /article/articles_create/ HTTP/1.1" 500 172558 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-04-23 18:58:30,562 ERROR Internal Server Error: /admin/news/post/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.core.exceptions.FieldDoesNotExist'>, FieldDoesNotExist("Post has no field named 'quantity'"), <traceback object at 0x0000028570270880>)
+Traceback (most recent call last):
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\options.py", line 681, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'quantity'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\contrib\admin\options.py", line 714, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\contrib\admin\sites.py", line 240, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\contrib\admin\options.py", line 2014, in changelist_view
+    response = self.response_action(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\contrib\admin\options.py", line 1648, in response_action
+    response = func(self, request, queryset)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\admin.py", line 9, in nullfy_quantity
+    queryset.update(quantity=0)
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\modeltranslation\manager.py", line 372, in update
+    return super().update(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\query.py", line 1226, in update
+    query.add_update_values(kwargs)
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\sql\subqueries.py", line 88, in add_update_values
+    field = self.get_meta().get_field(name)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\options.py", line 683, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: Post has no field named 'quantity'
+2024-04-23 18:58:30,590 ERROR "POST /admin/news/post/ HTTP/1.1" 500 147381 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-04-24 20:54:23,366 ERROR Internal Server Error: / C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'AttributeError'>, AttributeError("'User' object has no attribute 'filter'"), <traceback object at 0x00000274AE3A9CC0>)
+Traceback (most recent call last):
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\views.py", line 87, in get_context_data
+    context['is_not_author'] = not self.request.user.filter(name='author').exists()
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+           ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'filter'
+2024-04-24 20:54:23,374 ERROR "GET / HTTP/1.1" 500 91318 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None

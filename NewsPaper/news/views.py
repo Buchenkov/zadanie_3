@@ -1,5 +1,6 @@
 import logging
 
+import pytz
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import Group
@@ -13,6 +14,9 @@ from .filters import NewsFilter
 from .forms import PostForm
 from .models import *
 
+from django.utils import timezone
+from django.shortcuts import redirect
+
 from django.utils.translation import gettext as _  # импортируем функцию для перевода
 
 
@@ -25,9 +29,16 @@ class Index(View):
 
         context = {
             'models': models,
+            # 'current_time': timezone.localtime(timezone.now()),
+            # 'timezones': pytz.common_timezones  # добавляем в контекст все доступные часовые пояса
         }
 
         return HttpResponse(render(request, 'default.html', context))
+
+    # #  по пост-запросу будем добавлять в сессию часовой пояс, который и будет обрабатываться написанным нами ранее middleware
+    # def post(self, request):
+    #     request.session['django_timezone'] = request.POST['timezone']
+    #     return redirect('/')
 
 
 logger = logging.getLogger(__name__)
@@ -70,11 +81,19 @@ class NewsList(ListView):
         # Возвращаем из функции отфильтрованный список товаров
         return self.filterset.qs
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['filterest'] = NewsFilter(self.request.GET, queryset=self.get_queryset())
-    #     context['is_not_author'] = not self.request.user.filter(name='author').exists
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_not_author'] = not self.request.user.groups.filter(name='author').exists()
+        context['filterest'] = NewsFilter(self.request.GET, queryset=self.get_queryset())
+
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones  # добавляем в контекст все доступные часовые пояса
+        return context
+
+    #  по пост-запросу будем добавлять в сессию часовой пояс, который и будет обрабатываться написанным нами ранее middleware
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/')
 
 
 class PostView(DetailView):
