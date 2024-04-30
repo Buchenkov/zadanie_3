@@ -6,9 +6,9 @@
 
 <!-- Название у нас будет ... -->
 {% block content %}
-    {% if is_not_author %}
-        <button><a href="{% url 'upgrade' %}">Стать автором</a></button>
-    {% endif %}
+<!--    {% if is_not_author %}-->
+<!--        <button><a href="{% url 'upgrade' %}">Стать автором</a></button>-->
+<!--    {% endif %}-->
 {% if posts %}
 <h2> {% trans "Number of posts" %} {{ posts|length }}</h2>
 <h3>{% current_time '%d %b %Y' %}</h3>

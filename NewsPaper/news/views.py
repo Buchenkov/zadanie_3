@@ -11,7 +11,7 @@ from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
 from .filters import NewsFilter
-from .forms import PostForm
+from .forms import PostForm, ArticleForm
 from .models import *
 
 from django.utils import timezone
@@ -151,7 +151,7 @@ class PostCreate(PermissionRequiredMixin, CreateView):
 
 class ArticleCreate(PermissionRequiredMixin, CreateView):
     permission_required = ('news.add_post',)
-    form_class = PostForm
+    form_class = ArticleForm
     model = Post
     template_name = 'article/articles_create.html'
 

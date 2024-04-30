@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.yandex',  # отвечает за выход через Yandex
     'subscriptions',
     'django_apscheduler',
+    # 'rest_framework',
 ]
 
 SITE_ID = 1

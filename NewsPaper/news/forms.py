@@ -4,10 +4,23 @@ from django.core.exceptions import ValidationError
 from .models import *
 
 
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        # fields = '__all__'  # все пункты, по 3 раза!
+        fields = [
+            'author',
+            'category',
+            'title',
+            'text',
+            'rating',
+        ]
+
+
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        # fields = '__all__'
+        # fields = '__all__'  # все пункты, по 3 раза!
         fields = [
             'author',
             'category',
