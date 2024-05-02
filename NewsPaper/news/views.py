@@ -1,3 +1,4 @@
+import json
 import logging
 
 import pytz
@@ -5,19 +6,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import Group
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.utils import timezone
+from django.utils.translation import gettext as _  # импортируем функцию для перевода
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
 from .filters import NewsFilter
 from .forms import PostForm, ArticleForm
 from .models import *
-
-from django.utils import timezone
-from django.shortcuts import redirect
-
-from django.utils.translation import gettext as _  # импортируем функцию для перевода
 
 
 # Create your views here.
@@ -234,3 +233,38 @@ def subscribe(request, pk):
 
     message = 'Вы успешно подписались на рассылку новостей категории'
     return render(request, 'news/subscribe.html', {'category': category, 'message': message})
+
+
+# rest
+def get_article(_, pk):
+    article = Post.objects.get(pk=pk)
+    return HttpResponse(content=article, status=200)
+
+
+def get_articles(_):
+    articles = Post.objects.all()
+    return HttpResponse(content=articles, status=200)
+
+
+def create_article(request):
+    body = json.loads(request.body.decode('utf-8'))
+    article = Post.objects.create(
+        title=body['title'],
+        text=body['text']
+    )
+    return HttpResponse(content=article, status=201)
+
+
+def edit_article(request, pk):
+    body = json.loads(request.body.decode('utf-8'))
+    article = Post.objects.get(pk=pk)
+    for attr, value in body.items():  # редактирование объекта
+        setattr(article, attr, value)
+    article.save()
+    data = {'title': article.title, 'text': article.text}
+    return HttpResponse(content=data, status=200)
+
+
+def delete_article(_, pk):
+    Post.objects.get(pk=pk).delete()
+    return HttpResponse(status=204)

@@ -1,857 +1,15 @@
-2024-04-20 15:53:06,988 ERROR Internal Server Error: / C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError('Unknown argument for \'trans\' tag: \'\'%d "%b" %Y\'\'. The only options available are \'noop\', \'context\' "xxx", and \'as VAR\'.'), <traceback object at 0x000001FE1B19FB00>)
+2024-05-02 15:29:05,579 ERROR Internal Server Error: /create_article/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.db.utils.IntegrityError'>, IntegrityError('NOT NULL constraint failed: news_post.author_id'), <traceback object at 0x00000278FCFB9C80>)
 Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
-    response = response.render()
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 114, in render
-    self.content = self.rendered_content
-                   ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
-    template = self.resolve_template(self.template_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
-    return select_template(template, using=self.using)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
-    return engine.get_template(template_name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
-    template, origin = self.find_template(template_name)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
-    template = loader.get_template(name, skip=skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-           ^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
-    return parser.parse()
-           ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
-    nodelist = parser.parse()
-               ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
-    nodelist = parser.parse(("endblock",))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\defaulttags.py", line 960, in do_if
-    nodelist = parser.parse(("elif", "else", "endif"))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\templatetags\i18n.py", line 443, in do_translate
-    raise TemplateSyntaxError(
-django.template.exceptions.TemplateSyntaxError: Unknown argument for 'trans' tag: ''%d "%b" %Y''. The only options available are 'noop', 'context' "xxx", and 'as VAR'.
-2024-04-20 15:53:07,011 ERROR "GET / HTTP/1.1" 500 287447 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-20 15:53:19,835 ERROR Internal Server Error: / C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError('Unknown argument for \'trans\' tag: \'\'%d %b %Y\'\'. The only options available are \'noop\', \'context\' "xxx", and \'as VAR\'.'), <traceback object at 0x000001FE1B1DE8C0>)
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
-    response = response.render()
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 114, in render
-    self.content = self.rendered_content
-                   ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
-    template = self.resolve_template(self.template_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
-    return select_template(template, using=self.using)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
-    return engine.get_template(template_name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
-    template, origin = self.find_template(template_name)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
-    template = loader.get_template(name, skip=skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-           ^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
-    return parser.parse()
-           ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
-    nodelist = parser.parse()
-               ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
-    nodelist = parser.parse(("endblock",))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\defaulttags.py", line 960, in do_if
-    nodelist = parser.parse(("elif", "else", "endif"))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\templatetags\i18n.py", line 443, in do_translate
-    raise TemplateSyntaxError(
-django.template.exceptions.TemplateSyntaxError: Unknown argument for 'trans' tag: ''%d %b %Y''. The only options available are 'noop', 'context' "xxx", and 'as VAR'.
-2024-04-20 15:53:19,852 ERROR "GET / HTTP/1.1" 500 287295 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-20 15:53:31,241 ERROR Internal Server Error: / C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError('Unknown argument for \'trans\' tag: \'\'%d %b %Y\'\'. The only options available are \'noop\', \'context\' "xxx", and \'as VAR\'.'), <traceback object at 0x000001E0DFD9E580>)
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
-    response = response.render()
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 114, in render
-    self.content = self.rendered_content
-                   ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
-    template = self.resolve_template(self.template_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
-    return select_template(template, using=self.using)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
-    return engine.get_template(template_name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
-    template, origin = self.find_template(template_name)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
-    template = loader.get_template(name, skip=skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-           ^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
-    return parser.parse()
-           ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
-    nodelist = parser.parse()
-               ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
-    nodelist = parser.parse(("endblock",))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\defaulttags.py", line 960, in do_if
-    nodelist = parser.parse(("elif", "else", "endif"))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\templatetags\i18n.py", line 443, in do_translate
-    raise TemplateSyntaxError(
-django.template.exceptions.TemplateSyntaxError: Unknown argument for 'trans' tag: ''%d %b %Y''. The only options available are 'noop', 'context' "xxx", and 'as VAR'.
-2024-04-20 15:53:31,266 ERROR "GET / HTTP/1.1" 500 287295 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-20 15:54:21,937 ERROR Internal Server Error: / C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError('Unknown argument for \'trans\' tag: \'\'%d %b %Y\'\'. The only options available are \'noop\', \'context\' "xxx", and \'as VAR\'.'), <traceback object at 0x000001CA1374E100>)
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
-    response = response.render()
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 114, in render
-    self.content = self.rendered_content
-                   ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
-    template = self.resolve_template(self.template_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
-    return select_template(template, using=self.using)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
-    return engine.get_template(template_name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
-    template, origin = self.find_template(template_name)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
-    template = loader.get_template(name, skip=skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-           ^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
-    return parser.parse()
-           ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
-    nodelist = parser.parse()
-               ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
-    nodelist = parser.parse(("endblock",))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\defaulttags.py", line 960, in do_if
-    nodelist = parser.parse(("elif", "else", "endif"))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\templatetags\i18n.py", line 443, in do_translate
-    raise TemplateSyntaxError(
-django.template.exceptions.TemplateSyntaxError: Unknown argument for 'trans' tag: ''%d %b %Y''. The only options available are 'noop', 'context' "xxx", and 'as VAR'.
-2024-04-20 15:54:21,958 ERROR "GET / HTTP/1.1" 500 287103 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-20 16:13:49,914 ERROR Internal Server Error: /article/articles_create/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Invalid block tag on line 4: 'trans', expected 'endblock'. Did you forget to register or load this tag?"), <traceback object at 0x0000020719E42540>)
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 502, in parse
-    compile_func = self.tags[command]
-                   ~~~~~~~~~^^^^^^^^^
-KeyError: 'trans'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
-    response = response.render()
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 114, in render
-    self.content = self.rendered_content
-                   ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
-    template = self.resolve_template(self.template_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
-    return select_template(template, using=self.using)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
-    return engine.get_template(template_name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
-    template, origin = self.find_template(template_name)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
-    template = loader.get_template(name, skip=skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-           ^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
-    return parser.parse()
-           ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
-    nodelist = parser.parse()
-               ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
-    nodelist = parser.parse(("endblock",))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 504, in parse
-    self.invalid_block_tag(token, command, parse_until)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
-    raise self.error(
-django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 4: 'trans', expected 'endblock'. Did you forget to register or load this tag?
-2024-04-20 16:13:49,943 ERROR "GET /article/articles_create/ HTTP/1.1" 500 172270 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-20 16:14:41,021 ERROR Internal Server Error: /article/articles_create/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Invalid block tag on line 4: 'trans', expected 'endblock'. Did you forget to register or load this tag?"), <traceback object at 0x0000027FD4FB59C0>)
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 502, in parse
-    compile_func = self.tags[command]
-                   ~~~~~~~~~^^^^^^^^^
-KeyError: 'trans'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
-    response = response.render()
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 114, in render
-    self.content = self.rendered_content
-                   ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
-    template = self.resolve_template(self.template_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
-    return select_template(template, using=self.using)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
-    return engine.get_template(template_name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
-    template, origin = self.find_template(template_name)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
-    template = loader.get_template(name, skip=skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-           ^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
-    return parser.parse()
-           ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
-    nodelist = parser.parse()
-               ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
-    nodelist = parser.parse(("endblock",))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 504, in parse
-    self.invalid_block_tag(token, command, parse_until)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
-    raise self.error(
-django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 4: 'trans', expected 'endblock'. Did you forget to register or load this tag?
-2024-04-20 16:14:41,042 ERROR "GET /article/articles_create/ HTTP/1.1" 500 172287 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-20 16:15:25,407 ERROR Internal Server Error: /article/articles_create/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Invalid block tag on line 4: 'trans', expected 'endblock'. Did you forget to register or load this tag?"), <traceback object at 0x000002A5A72021C0>)
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 502, in parse
-    compile_func = self.tags[command]
-                   ~~~~~~~~~^^^^^^^^^
-KeyError: 'trans'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
-    response = response.render()
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 114, in render
-    self.content = self.rendered_content
-                   ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
-    template = self.resolve_template(self.template_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
-    return select_template(template, using=self.using)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
-    return engine.get_template(template_name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
-    template, origin = self.find_template(template_name)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
-    template = loader.get_template(name, skip=skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-           ^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
-    return parser.parse()
-           ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
-    nodelist = parser.parse()
-               ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
-    nodelist = parser.parse(("endblock",))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 504, in parse
-    self.invalid_block_tag(token, command, parse_until)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
-    raise self.error(
-django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 4: 'trans', expected 'endblock'. Did you forget to register or load this tag?
-2024-04-20 16:15:25,445 ERROR "GET /article/articles_create/ HTTP/1.1" 500 172270 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-20 16:34:55,773 ERROR Internal Server Error: /search/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError('Invalid block tag on line 18: \'trans"find"\', expected \'endblock\'. Did you forget to register or load this tag?'), <traceback object at 0x000001CA1F506480>)
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 502, in parse
-    compile_func = self.tags[command]
-                   ~~~~~~~~~^^^^^^^^^
-KeyError: 'trans"find"'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
-    response = response.render()
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 114, in render
-    self.content = self.rendered_content
-                   ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
-    template = self.resolve_template(self.template_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
-    return select_template(template, using=self.using)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
-    return engine.get_template(template_name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
-    template, origin = self.find_template(template_name)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
-    template = loader.get_template(name, skip=skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-           ^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
-    return parser.parse()
-           ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
-    nodelist = parser.parse()
-               ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
-    nodelist = parser.parse(("endblock",))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 504, in parse
-    self.invalid_block_tag(token, command, parse_until)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
-    raise self.error(
-django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 18: 'trans"find"', expected 'endblock'. Did you forget to register or load this tag?
-2024-04-20 16:34:55,795 ERROR "GET /search/ HTTP/1.1" 500 204855 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-20 16:35:38,114 ERROR Internal Server Error: /news/post_create/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError('Invalid block tag on line 10: \'trans"Save"\', expected \'endblock\'. Did you forget to register or load this tag?'), <traceback object at 0x00000294316D1C00>)
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 502, in parse
-    compile_func = self.tags[command]
-                   ~~~~~~~~~^^^^^^^^^
-KeyError: 'trans"Save"'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
-    response = response.render()
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 114, in render
-    self.content = self.rendered_content
-                   ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
-    template = self.resolve_template(self.template_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
-    return select_template(template, using=self.using)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
-    return engine.get_template(template_name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
-    template, origin = self.find_template(template_name)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
-    template = loader.get_template(name, skip=skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-           ^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
-    return parser.parse()
-           ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
-    nodelist = parser.parse()
-               ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
-    nodelist = parser.parse(("endblock",))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 504, in parse
-    self.invalid_block_tag(token, command, parse_until)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
-    raise self.error(
-django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 10: 'trans"Save"', expected 'endblock'. Did you forget to register or load this tag?
-2024-04-20 16:35:38,141 ERROR "GET /news/post_create/ HTTP/1.1" 500 172515 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-20 16:36:07,419 ERROR Internal Server Error: /news/post_create/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError('Invalid block tag on line 10: \'trans"Save"\', expected \'endblock\'. Did you forget to register or load this tag?'), <traceback object at 0x00000294316EC540>)
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 502, in parse
-    compile_func = self.tags[command]
-                   ~~~~~~~~~^^^^^^^^^
-KeyError: 'trans"Save"'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
-    response = response.render()
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 114, in render
-    self.content = self.rendered_content
-                   ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
-    template = self.resolve_template(self.template_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
-    return select_template(template, using=self.using)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
-    return engine.get_template(template_name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
-    template, origin = self.find_template(template_name)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
-    template = loader.get_template(name, skip=skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-           ^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
-    return parser.parse()
-           ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
-    nodelist = parser.parse()
-               ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
-    nodelist = parser.parse(("endblock",))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 504, in parse
-    self.invalid_block_tag(token, command, parse_until)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
-    raise self.error(
-django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 10: 'trans"Save"', expected 'endblock'. Did you forget to register or load this tag?
-2024-04-20 16:36:07,439 ERROR "GET /news/post_create/ HTTP/1.1" 500 172361 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-20 16:36:09,892 ERROR Internal Server Error: /article/articles_create/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError('Invalid block tag on line 10: \'trans"Save"\', expected \'endblock\'. Did you forget to register or load this tag?'), <traceback object at 0x000002943171E3C0>)
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 502, in parse
-    compile_func = self.tags[command]
-                   ~~~~~~~~~^^^^^^^^^
-KeyError: 'trans"Save"'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
-    response = response.render()
-               ^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 114, in render
-    self.content = self.rendered_content
-                   ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
-    template = self.resolve_template(self.template_name)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
-    return select_template(template, using=self.using)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
-    return engine.get_template(template_name)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
-    template, origin = self.find_template(template_name)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
-    template = loader.get_template(name, skip=skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-           ^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
-    return parser.parse()
-           ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
-    nodelist = parser.parse()
-               ^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 510, in parse
-    raise self.error(token, e)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 508, in parse
-    compiled_result = compile_func(self, token)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
-    nodelist = parser.parse(("endblock",))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 504, in parse
-    self.invalid_block_tag(token, command, parse_until)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
-    raise self.error(
-django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 10: 'trans"Save"', expected 'endblock'. Did you forget to register or load this tag?
-2024-04-20 16:36:09,911 ERROR "GET /article/articles_create/ HTTP/1.1" 500 172558 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-23 18:58:30,562 ERROR Internal Server Error: /admin/news/post/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'django.core.exceptions.FieldDoesNotExist'>, FieldDoesNotExist("Post has no field named 'quantity'"), <traceback object at 0x0000028570270880>)
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\options.py", line 681, in get_field
-    return self.fields_map[field_name]
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
-KeyError: 'quantity'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\contrib\admin\options.py", line 714, in wrapper
-    return self.admin_site.admin_view(view)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
-    result = _process_exception(request, e)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
-    response = view_func(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
-    response = view_func(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\contrib\admin\sites.py", line 240, in inner
-    return view(request, *args, **kwargs)
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
-    return bound_method(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
-    result = _process_exception(request, e)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
-    response = view_func(request, *args, **kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\contrib\admin\options.py", line 2014, in changelist_view
-    response = self.response_action(
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\contrib\admin\options.py", line 1648, in response_action
-    response = func(self, request, queryset)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\admin.py", line 9, in nullfy_quantity
-    queryset.update(quantity=0)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\modeltranslation\manager.py", line 372, in update
-    return super().update(**kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\query.py", line 1226, in update
-    query.add_update_values(kwargs)
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\sql\subqueries.py", line 88, in add_update_values
-    field = self.get_meta().get_field(name)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\options.py", line 683, in get_field
-    raise FieldDoesNotExist(
-django.core.exceptions.FieldDoesNotExist: Post has no field named 'quantity'
-2024-04-23 18:58:30,590 ERROR "POST /admin/news/post/ HTTP/1.1" 500 147381 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
-2024-04-24 20:54:23,366 ERROR Internal Server Error: / C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'AttributeError'>, AttributeError("'User' object has no attribute 'filter'"), <traceback object at 0x00000274AE3A9CC0>)
+sqlite3.IntegrityError: NOT NULL constraint failed: news_post.author_id
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
     response = get_response(request)
@@ -859,20 +17,204 @@ Traceback (most recent call last):
   File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
-    return handler(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\views\generic\list.py", line 174, in get
-    context = self.get_context_data()
-              ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\views.py", line 87, in get_context_data
-    context['is_not_author'] = not self.request.user.filter(name='author').exists()
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\functional.py", line 253, in inner
-    return func(_wrapped, *args)
-           ^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'User' object has no attribute 'filter'
-2024-04-24 20:54:23,374 ERROR "GET / HTTP/1.1" 500 91318 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\views.py", line 251, in create_article
+    article = Post.objects.create(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\modeltranslation\manager.py", line 411, in create
+    return super().create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\query.py", line 677, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\models.py", line 80, in save
+    super().save(*args, **kwargs)   # сначала вызываем метод родителя, чтобы объект сохранился
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\query.py", line 1845, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: news_post.author_id
+2024-05-02 15:29:05,658 ERROR "GET /create_article/ HTTP/1.1" 500 181652 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-05-02 15:32:28,693 ERROR Internal Server Error: /edit_article/137/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'json.decoder.JSONDecodeError'>, JSONDecodeError('Expecting value: line 1 column 1 (char 0)'), <traceback object at 0x00000278FD193600>)
+Traceback (most recent call last):
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\views.py", line 259, in edit_article
+    body = json.loads(request.body.decode('utf-8'))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-05-02 15:32:28,765 ERROR "GET /edit_article/137/ HTTP/1.1" 500 83432 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-05-02 15:32:42,279 ERROR Internal Server Error: /edit_article/107/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'json.decoder.JSONDecodeError'>, JSONDecodeError('Expecting value: line 1 column 1 (char 0)'), <traceback object at 0x00000278FCDFCBC0>)
+Traceback (most recent call last):
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\views.py", line 259, in edit_article
+    body = json.loads(request.body.decode('utf-8'))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-05-02 15:32:42,293 ERROR "GET /edit_article/107/ HTTP/1.1" 500 83432 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-05-02 15:33:16,396 ERROR Internal Server Error: /edit_article/113/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'json.decoder.JSONDecodeError'>, JSONDecodeError('Expecting value: line 1 column 1 (char 0)'), <traceback object at 0x00000278FD098280>)
+Traceback (most recent call last):
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\views.py", line 259, in edit_article
+    body = json.loads(request.body.decode('utf-8'))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-05-02 15:33:16,416 ERROR "GET /edit_article/113/ HTTP/1.1" 500 83432 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-05-02 15:34:14,115 ERROR Internal Server Error: /edit_article/113/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'json.decoder.JSONDecodeError'>, JSONDecodeError('Expecting value: line 1 column 1 (char 0)'), <traceback object at 0x00000278FCF36980>)
+Traceback (most recent call last):
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\views.py", line 259, in edit_article
+    body = json.loads(request.body.decode('utf-8'))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-05-02 15:34:14,128 ERROR "GET /edit_article/113/ HTTP/1.1" 500 83432 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-05-02 15:36:19,713 ERROR Internal Server Error: /edit_article/113/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'json.decoder.JSONDecodeError'>, JSONDecodeError('Expecting value: line 1 column 1 (char 0)'), <traceback object at 0x00000278FD2CAD80>)
+Traceback (most recent call last):
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\views.py", line 259, in edit_article
+    body = json.loads(request.body.decode('utf-8'))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-05-02 15:36:19,739 ERROR "GET /edit_article/113/ HTTP/1.1" 500 83432 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-05-02 18:48:04,337 ERROR Internal Server Error: /create_article/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'json.decoder.JSONDecodeError'>, JSONDecodeError('Expecting value: line 1 column 1 (char 0)'), <traceback object at 0x000002725F4C2140>)
+Traceback (most recent call last):
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\views.py", line 250, in create_article
+    body = json.loads(request.body.decode('utf-8'))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-05-02 18:48:04,370 ERROR "GET /create_article/ HTTP/1.1" 500 81369 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
+2024-05-02 18:55:10,773 ERROR Internal Server Error: /create_article/ C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\utils\log.py (<class 'json.decoder.JSONDecodeError'>, JSONDecodeError('Expecting value: line 1 column 1 (char 0)'), <traceback object at 0x000002725F49DA80>)
+Traceback (most recent call last):
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\NewsPaper\news\views.py", line 250, in create_article
+    body = json.loads(request.body.decode('utf-8'))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-05-02 18:55:10,801 ERROR "GET /create_article/ HTTP/1.1" 500 81369 C:\Users\igor_\Desktop\skillfactory\Module D\NewsPaper\venv\Lib\site-packages\django\core\servers\basehttp.py None
