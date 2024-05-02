@@ -5,6 +5,7 @@ from accounts import views
 from .tasks import weekly_send_email_task
 # Импортируем созданные нами представления
 from .views import *
+from django.views.generic import TemplateView
 
 urlpatterns = [
    path('', NewsList.as_view()),
@@ -22,6 +23,11 @@ urlpatterns = [
    path('categories/<int:pk>', CategoryListView.as_view(), name='category_list'),  # страница категории и подписка
    path('categories/<int:pk>/subscribe', subscribe, name='subscribe'),  # подписка на категорию (успешно подписался)
    path('', weekly_send_email_task, name='weekly_send_email_task'),   # еженедельная подписка через tasks и celery
+   # path('post/', NewsList.as_view()),   # дубль - не нужен
+   path('swagger-ui/', TemplateView.as_view(
+      template_name='swagger-ui.html',
+      extra_context={'schema_url': 'openapi-schema'}
+   ), name='swagger-ui'),
 ]
 
 # urlpatterns = [

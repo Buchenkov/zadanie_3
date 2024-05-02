@@ -90,7 +90,8 @@ class NewsList(ListView):
         context['timezones'] = pytz.common_timezones  # добавляем в контекст все доступные часовые пояса
         return context
 
-    #  по пост-запросу будем добавлять в сессию часовой пояс, который и будет обрабатываться написанным нами ранее middleware
+    #  по пост-запросу будем добавлять в сессию часовой пояс,
+    #  который и будет обрабатываться написанным нами ранее middleware
     def post(self, request):
         request.session['django_timezone'] = request.POST['timezone']
         return redirect('/')
